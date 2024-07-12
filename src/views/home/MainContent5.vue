@@ -1,0 +1,34 @@
+<template class="tem">
+  <div class=" py-[385px] sm:py-[250px] bg-black text-white flex justify-center items-center">
+    <div class="text-center">
+      <div class="">
+        <div class="text-[56px] md:text-[46px] sm:text-[32px] font-bold mb-[66px]"
+        style="background-image: linear-gradient(to left, #B6B7F7, #7FB2FE);
+        background-clip: text;
+        -webkit-background-clip: text;
+        color: transparent;">
+          <span>
+            비지니스 광고의 시작,<br>이제 샌드고와 함께 하세요
+          </span>
+        </div>
+        <div class="">
+          <span class="rounded-[44px] text-white px-6 py-3 text-center text-[21px] 
+          font-medium w-[206px] h-[65px] sm:text-[15px]"
+          style="background-color: #6250FF">
+          메시지 바로가기
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'MainContent5'
+};
+</script>
+
+<style scoped>
+
+</style>
