@@ -1,17 +1,17 @@
 <template class="tem">
-  <div class="px-[12.5%] py-[225px] bg-white text-black flex flex-col justify-center items-center">
+  <section class="px-[12.5%] py-[225px] bg-white text-black flex flex-col justify-center items-center">
     <div class="mb-[25px]">
       <img src="@/assets/icon1/depend.png" class="w-[80px] h-auto" />
     </div>
-    <div class="text-center mb-[64px]">
+    <article class="text-center mb-[64px]">
       <div class="mb-[24px]">
         <span class="text-[56px] xl:text-[48px] lg:text-[48px] md:text-[36px] sm:text-[32px] font-bold">정확도와 다양함은 물론<br>신뢰할 수 있는 보안까지</span>
       </div>
       <div class="text-[26px] xl:text-[22px] lg:text-[22px] md:text-[22px] sm:text-[20px]" style="color: #5C5C5C">
         <span class="">고객님들 입장에서 고민하였습니다.</span>
       </div>
-    </div>
-    <div class="flex w-full flex-row lg:flex-col md:flex-col sm:flex-col items-center gap-[44px] mb-[44px]">
+    </article>
+    <article class="flex w-full flex-row lg:flex-col md:flex-col sm:flex-col items-center gap-[44px] mb-[44px]">
       <div class="flex-1 lg:w-full md:w-full sm:w-full rounded-[25px] pt-[72px] pb-[67px] px-[54px] zl:py-[52px] zl:px-[46px] xl:py-[48px] xl:px-[36px] sm:px-[20px] sm:py-[40px]"
       style="background-color: #DCEFF4">
         <div class="text-[34px] zl:text-[25px] xl:text-[20px] md:text-[25px] sm:text-[20px] font-bold text-black">
@@ -40,8 +40,8 @@
           <img src="@/assets/main/lock.png" class="xl:w-[200px] md:w-[200px] sm:w-[200px] h-auto" />
         </div>
       </div>
-    </div>
-    <div class="flex w-full">
+    </article>
+    <article class="flex w-full">
   <div class="flex flex-auto rounded-[25px] pt-[72px] xl:pt-[48px] sm:pt-[36px] sm:px-[20px] flex flex-col justify-center items-center"
   style="background-color: #F8F9FA">
     <div class="text-[34px] zl:text-[25px] xl:text-[20px] md:text-[25px] sm:text-[20px] font-bold text-black">
@@ -53,9 +53,9 @@
     </div>
     <img src="@/assets/main/4p3.png" class="xl:w-[500px] h-auto lg:w-[500px] md:w-[500px] sm:w-[250px]" />
   </div>
-</div>
+</article>
 
-  </div>
+  </section>
 </template>
 
 <script>

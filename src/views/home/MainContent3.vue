@@ -1,9 +1,9 @@
 <template class="tem">
-  <div class="px-[12.5%] py-[125px] flex flex-col justify-center items-center bg-white text-black">
+  <section class="px-[12.5%] py-[125px] flex flex-col justify-center items-center bg-white text-black">
     <div class="mb-[50px]">
       <img src="@/assets/icon1/know.png" class="w-[79px] sm:w-[48px] h-auto" />
     </div>
-    <div class="mb-[96px] sm:mb-[64px] text-center">
+    <article class="mb-[96px] sm:mb-[64px] text-center">
       <div class="mb-[24px]">
         <span class="text-[56px] sm:text-[32px] font-bold">
           샌드고의 다양한<br>기능들을 살펴보세요<br></span>
@@ -11,8 +11,8 @@
       <div class="">
         <span class="text-[26px] sm:text-[20px] font-normal" style="color: #5C5C5C">고객님들 입장에서 고민하였습니다.</span>
       </div>
-    </div>
-    <div class="flex justify-around items-center flex-row lg:flex-col md:flex-col sm:flex-col gap-[54px] xl:gap-[36px] mb-[40px] xl:mb-[30px]">
+    </article>
+    <article class="flex justify-around items-center flex-row lg:flex-col md:flex-col sm:flex-col gap-[54px] xl:gap-[36px] mb-[40px] xl:mb-[30px]">
       <div class="flex-auto flex flex-col lg:w-full pt-[72px] pl-[54px] xl:pt-[56px] xl:pl-[36px] lg:pl-[156px] sm:pt-[40px] sm:pl-[30px] justify-start items-start rounded-[25px]"
       style="background-color:#F8F9FA">
         <div class="text-[34px] zl:text-[28px] xl:text-[27px] sm:text-[18px] font-bold text-black">
@@ -40,8 +40,8 @@
           <img src="@/assets/main/3p2.png" class="" />
         </div>
       </div>
-    </div>
-    <div class="flex items-center flex-row lg:flex-col md:flex-col sm:flex-col gap-[45px]">
+    </article>
+    <article class="flex items-center flex-row lg:flex-col md:flex-col sm:flex-col gap-[45px]">
       <div class="flex-auto flex flex-col justify-start items-start pt-[72px] pl-[54px] xl:pt-[56px] xl:pl-[36px] sm:pt-[40px] sm:px-[30px] rounded-[25px]"
       style="background-color:#DBE5FF">
         <div class="text-[34px] zl:text-[28px] xl:text-[27px] sm:text-[18px] font-bold"
@@ -68,8 +68,8 @@
           <img src="@/assets/main/3p4.png" class="" />
         </div>
       </div>
-    </div>
-  </div>
+    </article>
+  </section>
 </template>
 
 <script>
