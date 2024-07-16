@@ -43,26 +43,27 @@
           </div>
         </div>
         <div class="">
-          <button class="flex w-full rounded-[8px] py-[19px] zl:py-[10px] text-[20px] zl:text-[14px] font-regular justify-center"
+          <button onclick="alert('구매가 완료되었습니다.')" class="flex w-full rounded-[8px] py-[19px] zl:py-[10px] text-[20px] zl:text-[14px] font-regular justify-center"
           style="background: #5146F0 0% 0% no-repeat padding-box; color:white">
             구매하기
           </button>
         </div>
         </div>
 
+        <!--2번-->
         <div class="flex-1 rounded-[8px] px-[32px] py-[40px]" 
         style = "background: #FFFFFF 0% 0% no-repeat padding-box; box-shadow: 0px 10px 10px #00000008;">
         <div class="text-[30px] zl:text-[25px] font-bold mb-[16px] zl:mb-[12px]">
-          30,000 원
+          10,000 원
         </div>
         <div class="text-[18px] zl:text-[14px] mb-[36px] zl:mb-[24px]"
         style="color: #7B7B7B">
-          총 66,667건 발송가능합니다<br>
+          총 76,667건 발송가능합니다<br>
           1건당 15원이 결제가능합니다
         </div>
         <div class="flex flew-row justify-between mb-[24px] zl:mb-[12px] md:gap-[200px] sm:gap-[80px]">
           <div class="text-[24px] zl:text-[18px] font-semibold">
-          330,000 크레딧
+          110,000 크레딧
           </div>
           <div class="text-[16px] zl:text-[12px] font-semibold rounded-[17px] px-[10px] py-[4px]"
           style="background-color: #E0EDFF; color: #2116BF">
@@ -73,15 +74,15 @@
         style="background: #F4F5F6 0% 0% no-repeat padding-box;">
           <div class="flex justify-between">
             <div class="text-[16px] zl:text-[12px]" style="color:#6E6E6E">기본 크레딧</div>
-            <div class="text-[18px] zl:text-[12px]" style="#070707">300,000</div>
+            <div class="text-[18px] zl:text-[12px]" style="#070707">100,000</div>
           </div>
           <div class="flex justify-between">
             <div class="text-[16px] zl:text-[12px]" style="color:#6E6E6E">추가 크레딧</div>
-            <div class="text-[18px] zl:text-[12px]" style="#070707">+ 30,000</div>
+            <div class="text-[18px] zl:text-[12px]" style="#070707">+ 10,000</div>
           </div>
         </div>
         <div class="">
-          <button class="flex w-full rounded-[8px] py-[19px] zl:py-[10px] text-[20px] zl:text-[14px] font-regular justify-center"
+          <button onclick="alert('구매가 완료되었습니다.')" class="flex w-full rounded-[8px] py-[19px] zl:py-[10px] text-[20px] zl:text-[14px] font-regular justify-center"
           style="background: #5146F0 0% 0% no-repeat padding-box; color:white">
             구매하기
           </button>
@@ -123,17 +124,18 @@
           </div>
         </div>
         <div class="">
-          <button class="flex w-full rounded-[8px] py-[19px] zl:py-[10px] text-[20px] zl:text-[14px] font-regular justify-center"
+          <button onclick="alert('구매가 완료되었습니다.')" class="flex w-full rounded-[8px] py-[19px] zl:py-[10px] text-[20px] zl:text-[14px] font-regular justify-center"
           style="background: #5146F0 0% 0% no-repeat padding-box; color:white">
             구매하기
           </button>
         </div>
         </div>
 
+        <!--4번-->
         <div class="flex-1 rounded-[8px] px-[32px] py-[40px]" 
         style = "background: #FFFFFF 0% 0% no-repeat padding-box; box-shadow: 0px 10px 10px #00000008;">
         <div class="text-[30px] zl:text-[25px] font-bold mb-[16px] zl:mb-[12px]">
-          30,000 원
+          10,000 원
         </div>
         <div class="text-[18px] zl:text-[14px] mb-[36px] zl:mb-[24px]"
         style="color: #7B7B7B">
@@ -142,7 +144,7 @@
         </div>
         <div class="flex flew-row justify-between mb-[24px] zl:mb-[12px] md:gap-[200px] sm:gap-[80px]">
           <div class="text-[24px] zl:text-[18px] font-semibold">
-          330,000 크레딧
+          110,000 크레딧
           </div>
           <div class="text-[16px] zl:text-[12px] font-semibold rounded-[17px] px-[10px] py-[4px]"
           style="background-color: #E0EDFF; color: #2116BF">
@@ -153,15 +155,15 @@
         style="background: #F4F5F6 0% 0% no-repeat padding-box;">
           <div class="flex justify-between">
             <div class="text-[16px] zl:text-[12px]" style="color:#6E6E6E">기본 크레딧</div>
-            <div class="text-[18px] zl:text-[12px]" style="#070707">300,000</div>
+            <div class="text-[18px] zl:text-[12px]" style="#070707">100,000</div>
           </div>
           <div class="flex justify-between">
             <div class="text-[16px] zl:text-[12px]" style="color:#6E6E6E">추가 크레딧</div>
-            <div class="text-[18px] zl:text-[12px]" style="#070707">+ 30,000</div>
+            <div class="text-[18px] zl:text-[12px]" style="#070707">+ 10,000</div>
           </div>
         </div>
         <div class="">
-          <button class="flex w-full rounded-[8px] py-[19px] zl:py-[10px] text-[20px] zl:text-[14px] font-regular justify-center"
+          <button onclick="alert('구매가 완료되었습니다.')" class="flex w-full rounded-[8px] py-[19px] zl:py-[10px] text-[20px] zl:text-[14px] font-regular justify-center"
           style="background: #5146F0 0% 0% no-repeat padding-box; color:white">
             구매하기
           </button>

@@ -1,5 +1,5 @@
 <template class="tem">
-    <section class="flex flex-row py-[22px] px-[19%] zl:px-[16%] xl:px-[5%] lg:px-[5%] md:px-[5%] sm:px-[5%] justify-end gap-[40px] zl:gap-[20px] xl:gap-[20px] md:gap-[5px]">
+    <section class="flex flex-row py-[22px] px-[19%] zl:px-[16%] xl:px-[5%] lg:px-[5%] md:px-[5%] sm:px-[5%] justify-end gap-[40px] zl:gap-[20px] xl:gap-[20px] md:gap-[5px] sm:gap-[10px]">
         <button class="text-[20px] px-[32px] py-[16px] 
         zl:text-[18px] zl:px-[24px] zl:py-[14px]
         xl:text-[18px] xl:px-[24px] xl:py-[14px] 

@@ -7,9 +7,9 @@
           <img src="./assets/logo.svg" class="w-[142px] h-auto">
           </router-link>
         </div>
-        <div class="navbar flex w-full items-center gap-[10%]">
-          <router-link to="/message" class="text-[20px] font-semibold">메시지</router-link>
-          <router-link to="/credit" class="text-[20px] font-semibold">크레딧</router-link>
+        <div class="navbar flex w-full items-center gap-[10%] md:gap-[20%] sm:gap-[20%]">
+          <router-link to="/message" class="text-[20px] sm:text-[14px] font-semibold">메시지</router-link>
+          <router-link to="/credit" class="text-[20px] sm:text-[14px] font-semibold">크레딧</router-link>
         </div>
       </nav>
     </header>
@@ -42,5 +42,29 @@ export default {
   width: 260%; 
   height: 3px; 
   background-color: blue;
+}
+
+@media (max-width: 768px) {
+  .navbar a.router-link-active::after {
+  content: ''; 
+  position: absolute; 
+  left: -20px;
+  bottom: -25px; 
+  width: 180%; 
+  height: 3px; 
+  background-color: blue;
+}
+}
+
+@media (max-width: 480px) {
+  .navbar a.router-link-active::after {
+  content: ''; 
+  position: absolute; 
+  left: -20px;
+  bottom: -30px; 
+  width: 200%; 
+  height: 3px; 
+  background-color: blue;
+}
 }
 </style>

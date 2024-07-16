@@ -7,9 +7,9 @@
           <img src="@/assets/logo2.svg" class="w-[142px] h-auto"/>
           </router-link>
         </div>
-        <div class="flex w-full items-center gap-[10%]">
-          <router-link to="/message" class="text-[20px] font-semibold">메시지</router-link>
-          <router-link to="/credit" class="text-[20px] font-semibold">크레딧</router-link>
+        <div class="navbar flex w-full items-center gap-[10%] md:gap-[20%] sm:gap-[20%]">
+          <router-link to="/message" class="text-[20px] sm:text-[14px] font-semibold">메시지</router-link>
+          <router-link to="/credit" class="text-[20px] sm:text-[14px] font-semibold">크레딧</router-link>
         </div>
       </nav>
     </header>

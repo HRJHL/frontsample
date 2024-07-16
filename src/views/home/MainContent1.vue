@@ -13,10 +13,10 @@
         </div>
         <div class="flex flex-row gap-5 lg:justify-center md:jutify-center sm:jutify-center">
           <button class="rounded-[44px] w-[206px] h-[65px] xl:w-[170px] xl:h-[56px] sm:w-[8rem] sm:h-[3rem] sm:text-[1rem] text-white 
-          text-center py-4 xl:py-3 text-[21px] font-medium" onclick="location.href='/message'"
+          text-center py-4 xl:py-3 sm:py-2 text-[21px] font-medium" onclick="location.href='/message'"
           style="background-color : #6250FF">회원가입</button>
           <button class="rounded-[44px] w-[206px] h-[65px] xl:w-[170px] xl:h-[56px] sm:w-[8rem] sm:h-[3rem] sm:text-[1rem] text-white
-          text-center py-4 xl:py-3 text-[21px] font-medium" onclick="location.href='/message'"
+          text-center py-4 xl:py-3 sm:py-2 text-[21px] font-medium" onclick="location.href='/message'"
           style="background-color:#242424">로그인</button>
         </div>
       </div>
