@@ -5,7 +5,7 @@
       <div class="flex flex-col gap-[18px]">
       <div class="text-center text-[45px] font-bold">크레딧 구매
       </div>
-      <div class="text-center text-[19px] font-regulaar" style="color:#7B7B7B">
+      <div class="text-center text-[19px] sm:text-[12px] font-regulaar" style="color:#7B7B7B">
         메시지 전송을 위해 사용할 크레딧 상품을 선택해 주세요
         </div>
         </div>
@@ -22,7 +22,7 @@
           총 66,667건 발송가능합니다<br>
           1건당 15원이 결제가능합니다
         </div>
-        <div class="flex flew-row justify-between mb-[24px] zl:mb-[12px] md:gap-[200px] sm:gap-[80px]">
+        <div class="flex flew-row justify-between mb-[24px] zl:mb-[12px] md:gap-[100px] sm:gap-[15px]">
           <div class="text-[24px] zl:text-[18px] font-semibold">
           330,000 크레딧
           </div>
@@ -61,7 +61,7 @@
           총 76,667건 발송가능합니다<br>
           1건당 15원이 결제가능합니다
         </div>
-        <div class="flex flew-row justify-between mb-[24px] zl:mb-[12px] md:gap-[200px] sm:gap-[80px]">
+        <div class="flex flew-row justify-between mb-[24px] zl:mb-[12px] md:gap-[100px] sm:gap-[15px]">
           <div class="text-[24px] zl:text-[18px] font-semibold">
           110,000 크레딧
           </div>
@@ -103,7 +103,7 @@
           총 66,667건 발송가능합니다<br>
           1건당 15원이 결제가능합니다
         </div>
-        <div class="flex flew-row justify-between mb-[24px] zl:mb-[12px] md:gap-[200px] sm:gap-[80px]">
+        <div class="flex flew-row justify-between mb-[24px] zl:mb-[12px] md:gap-[100px] sm:gap-[15px]">
           <div class="text-[24px] zl:text-[18px] font-semibold">
           330,000 크레딧
           </div>
@@ -142,7 +142,7 @@
           총 66,667건 발송가능합니다<br>
           1건당 15원이 결제가능합니다
         </div>
-        <div class="flex flew-row justify-between mb-[24px] zl:mb-[12px] md:gap-[200px] sm:gap-[80px]">
+        <div class="flex flew-row justify-between mb-[24px] zl:mb-[12px] md:gap-[100px] sm:gap-[15px]">
           <div class="text-[24px] zl:text-[18px] font-semibold">
           110,000 크레딧
           </div>
