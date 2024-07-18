@@ -12,7 +12,7 @@
       </div>
     </article>
     <article class="flex w-full flex-row lg:flex-col md:flex-col sm:flex-col items-center gap-[44px] mb-[44px]">
-      <div class="flex-1 lg:w-full md:w-full sm:w-full rounded-[25px] pt-[72px] pb-[67px] px-[54px] zl:py-[52px] zl:px-[46px] xl:py-[48px] xl:px-[36px] sm:px-[20px] sm:py-[40px]"
+      <div class="flex-1 lg:w-full md:w-full sm:w-full rounded-[25px] pt-[72px] pb-[67px] px-[54px] zl:py-[57px] zl:px-[46px] xl:py-[48px] xl:px-[36px] sm:px-[20px] sm:py-[40px]"
       style="background-color: #DCEFF4">
         <div class="text-[34px] zl:text-[25px] xl:text-[20px] md:text-[25px] sm:text-[16px] font-bold text-black">
           <span class="">일반 SMS는 기본, 카카오톡까지</span>
