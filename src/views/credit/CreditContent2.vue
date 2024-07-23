@@ -43,7 +43,7 @@
           </div>
         </div>
         <div class="">
-          <button onclick="alert('구매가 완료되었습니다.')" class="flex w-full rounded-[8px] py-[19px] zl:py-[10px] text-[20px] zl:text-[14px] font-regular justify-center"
+          <button onclick="location.href='/pay'" class="flex w-full rounded-[8px] py-[19px] zl:py-[10px] text-[20px] zl:text-[14px] font-regular justify-center"
           style="background: #5146F0 0% 0% no-repeat padding-box; color:white">
             구매하기
           </button>
@@ -82,7 +82,7 @@
           </div>
         </div>
         <div class="">
-          <button onclick="alert('구매가 완료되었습니다.')" class="flex w-full rounded-[8px] py-[19px] zl:py-[10px] text-[20px] zl:text-[14px] font-regular justify-center"
+          <button onclick="location.href='/pay'" class="flex w-full rounded-[8px] py-[19px] zl:py-[10px] text-[20px] zl:text-[14px] font-regular justify-center"
           style="background: #5146F0 0% 0% no-repeat padding-box; color:white">
             구매하기
           </button>
@@ -124,7 +124,7 @@
           </div>
         </div>
         <div class="">
-          <button onclick="alert('구매가 완료되었습니다.')" class="flex w-full rounded-[8px] py-[19px] zl:py-[10px] text-[20px] zl:text-[14px] font-regular justify-center"
+          <button onclick="location.href='/pay'" class="flex w-full rounded-[8px] py-[19px] zl:py-[10px] text-[20px] zl:text-[14px] font-regular justify-center"
           style="background: #5146F0 0% 0% no-repeat padding-box; color:white">
             구매하기
           </button>
@@ -163,7 +163,7 @@
           </div>
         </div>
         <div class="">
-          <button onclick="alert('구매가 완료되었습니다.')" class="flex w-full rounded-[8px] py-[19px] zl:py-[10px] text-[20px] zl:text-[14px] font-regular justify-center"
+          <button onclick="location.href='/pay'" class="flex w-full rounded-[8px] py-[19px] zl:py-[10px] text-[20px] zl:text-[14px] font-regular justify-center"
           style="background: #5146F0 0% 0% no-repeat padding-box; color:white">
             구매하기
           </button>

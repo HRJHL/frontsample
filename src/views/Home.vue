@@ -28,7 +28,7 @@ export default {
     MainContent4,
     MainContent5,
     AppFooter
-  }
+  },
 };
 </script>
 

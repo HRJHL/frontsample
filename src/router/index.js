@@ -3,6 +3,10 @@ import { createRouter, createWebHistory } from 'vue-router';
 import Home from '@/views/Home.vue';
 import Message from '@/views/Message.vue';
 import Credit from '@/views/Credit.vue';
+import Register from '@/views/Register.vue';
+import Login from '@/views/Login.vue';
+import Pay from '@/views/Pay.vue';
+import SuccessPage from '@/views/SuccessPage.vue';
 
 const routes = [
   {
@@ -19,6 +23,26 @@ const routes = [
     path: '/credit',
     name: 'Credit',
     component: Credit
+  },
+  {
+    path: '/register',
+    name: 'Register',
+    component: Register
+  },
+  {
+    path: '/login',
+    name: 'Login',
+    component: Login
+  },
+  {
+    path: '/pay',
+    name: 'Pay',
+    component: Pay
+  },
+  {
+    path: '/success',
+    name: 'Success',
+    component: SuccessPage
   }
 ];
 

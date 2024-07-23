@@ -7,18 +7,53 @@
           <img src="@/assets/logo2.svg" class="w-[142px] h-auto"/>
           </router-link>
         </div>
-        <div class="navbar flex w-full items-center gap-[10%] md:gap-[20%] sm:gap-[20%]">
-          <router-link to="/message" class="text-[20px] sm:text-[14px] font-semibold">메시지</router-link>
-          <router-link to="/credit" class="text-[20px] sm:text-[14px] font-semibold">크레딧</router-link>
+        <div class="flex w-full items-center">
+        <div class="navbar flex-1 flex gap-[20%] md:gap-[20%] sm:gap-[20%]">
+          <router-link v-if="isLoggedIn" to="/message" class="message text-[20px] sm:text-[14px] font-semibold">메시지</router-link>
+          <button v-if="!isLoggedIn" onclick="location.href='/login'" class="text-[20px] sm:text-[14px] font-semibold">메시지</button>
+          <router-link v-if="isLoggedIn" to="/credit" class="credit text-[20px] sm:text-[14px] font-semibold">크레딧</router-link>
+          <button v-if="!isLoggedIn" onclick="location.href='/login'" class="text-[20px] sm:text-[14px] font-semibold">크레딧</button>
+
+        </div>
+        <div class="flex-1 flex justify-end items-center gap-[10px] pr-[100px]">
+          <div v-if="isLoggedIn" class="text-[20px] sm:text-[14px] font-semibold">{{ userName }}님</div>
+          <router-link v-if="!isLoggedIn" to="/login" class="text-[20px] sm:text-[14px] font-semibold">로그인</router-link>
+          <router-link v-if="isLoggedIn" to="/" @click="logout" class="text-[20px] sm:text-[14px] font-semibold">로그아웃</router-link>
+        </div>
         </div>
       </nav>
     </header>
-    <router-view class="mt-[5rem]"/>
+    <router-view :isLoggedIn="isLoggedIn" @setIsLoggedIn="setIsLoggedIn" class="mt-[5rem]"/>
   </div>
 </template>
 <script>
 export default {
-  name: 'AppHeader'
+  name: 'AppHeader',
+  data(){
+    return{
+      isLoggedIn: false,
+      userName: '',
+    };
+  },
+  mounted() {
+    let loggedIn = sessionStorage.getItem("logg");
+    if(loggedIn == 'false'){
+      this.isLoggedIn = false;
+    }
+    else{
+      this.isLoggedIn = 'true';
+    }
+    console.log(loggedIn);
+    console.log(this.isLoggedIn);
+  },
+  methods: {
+    logout() {
+      this.isLoggedIn = false;
+      this.userName = '';
+      sessionStorage.setItem("logg", false);
+      sessionStorage.setItem('name', '');
+},
+  },
 };
 </script>
 
