@@ -23,7 +23,7 @@
         </div>
       </nav>
     </header>
-    <router-view :isLoggedIn="isLoggedIn" @setIsLoggedIn="setIsLoggedIn" class="mt-[5rem]"/>
+    <router-view class="mt-[5rem]"/>
   </div>
 </template>
 
@@ -35,23 +35,25 @@ export default {
   components: {
 
   },
-  data() {
-    return {
+  data(){
+    return{
       isLoggedIn: false,
       userName: '',
     };
   },
   mounted() {
-    sessionStorage.setItem("logg", this.isLoggedIn);
-    sessionStorage.setItem('name', this.userName);
+    let loggedIn = sessionStorage.getItem("logg");
+    let name = sessionStorage.getItem("name");
+    this.isLoggedIn = loggedIn;
+    this.userName = name;
   },
   methods: {
     logout() {
-      this.isLoggedIn = false;
-      this.userName = '';
-      sessionStorage.setItem("logg", false);
-      sessionStorage.setItem('name', '');
-    },
+      sessionStorage.clear();
+      console.log(this.isLoggedIn);
+      console.log(this.name);
+      window.location.href ='/';
+      },
   },
 };
 

@@ -1,11 +1,20 @@
-
 <template>
-  <h1>Success Page</h1>
-  <br/>
-  <p> url: {{currentRoute}} </p>
-  <p> params:  {{ this.$route.params.orderId }}</p>
-  <p> response:  {{ responseData }}</p>
-
+<div class="h-screen flex items-center justify-center" style="background-color:#F2F4F8">
+  <form @submit.prevent="login">
+    <div class="flex flex-col border px-[100px] py-[45px] gap-10 shadow" style="background-color:#FFFFFF">
+    <div class="flex flex-col gap-[10px] items-center justify-center">
+      <img src="@/assets/sendgo/logo.svg" class="w-[300px] h-auto mb-[10px]">
+      <div class="text-[24px] font-semibold">구매가 완료되었습니다.</div>
+    </div>
+    <div class="flex flex-row gap-4">
+    <div class="flex w-full justify-center rounded-[8px] gap-[10px]">
+    <router-link to="/message" class="font-semibold py-[5px]">잠시후 메인페이지로 이동됩니다.</router-link>
+    <img src="@/assets/sendgo/images.png" class="w-[30px] h-auto rotate-img">
+  </div>
+  </div>
+  </div>
+  </form>
+</div>
 </template>
 
 <script>
@@ -21,6 +30,10 @@ export default {
     }, 
     mounted() {
         this.success();
+        setTimeout(function() {
+        window.location.href = '/';
+    }, 300000);
+    
     },    
     methods: {
         getUrl:function(){
@@ -65,3 +78,17 @@ export default {
     }
 }
 </script>
+<style scoped>
+.rotate-img {
+  animation: rotate 1s linear infinite;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+</style>

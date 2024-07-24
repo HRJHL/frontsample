@@ -23,7 +23,7 @@
         </div>
       </nav>
     </header>
-    <router-view :isLoggedIn="isLoggedIn" @setIsLoggedIn="setIsLoggedIn" class="mt-[5rem]"/>
+    <router-view class="mt-[5rem]"/>
   </div>
 </template>
 <script>
@@ -37,22 +37,17 @@ export default {
   },
   mounted() {
     let loggedIn = sessionStorage.getItem("logg");
-    if(loggedIn == 'false'){
-      this.isLoggedIn = false;
-    }
-    else{
-      this.isLoggedIn = 'true';
-    }
-    console.log(loggedIn);
-    console.log(this.isLoggedIn);
+    let name = sessionStorage.getItem("name");
+    this.isLoggedIn = loggedIn;
+    this.userName = name;
   },
   methods: {
     logout() {
-      this.isLoggedIn = false;
-      this.userName = '';
-      sessionStorage.setItem("logg", false);
-      sessionStorage.setItem('name', '');
-},
+      sessionStorage.clear();
+      console.log(this.isLoggedIn);
+      console.log(this.name);
+      window.location.href ='/';
+      },
   },
 };
 </script>

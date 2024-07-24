@@ -12,12 +12,14 @@
         가장 빠르고 안정적인<br>문자 서비스 SENDGO
         </div>
         <div class="flex flex-row gap-5 lg:justify-center md:jutify-center sm:jutify-center">
-          <router-link to="/register" class="rounded-[44px] w-[206px] h-[65px] xl:w-[170px] xl:h-[56px] sm:w-[8rem] sm:h-[3rem] sm:text-[1rem] text-white 
+          <router-link v-if="!isLoggedIn" to="/register" class="rounded-[44px] w-[206px] h-[65px] xl:w-[170px] xl:h-[56px] sm:w-[8rem] sm:h-[3rem] sm:text-[1rem] text-white 
           text-center py-4 xl:py-3 sm:py-2 text-[21px] font-medium" style="background-color : #6250FF"
           >회원가입</router-link>
-          <router-link to="/login" class="rounded-[44px] w-[206px] h-[65px] xl:w-[170px] xl:h-[56px] sm:w-[8rem] sm:h-[3rem] sm:text-[1rem] text-white 
+          <div v-if="isLoggedIn" class="text-[50px] font-semibold" style="color:#FFFFFF">{{ userName }}님</div>
+          <router-link v-if="!isLoggedIn" to="/login" class="rounded-[44px] w-[206px] h-[65px] xl:w-[170px] xl:h-[56px] sm:w-[8rem] sm:h-[3rem] sm:text-[1rem] text-white 
           text-center py-4 xl:py-3 sm:py-2 text-[21px] font-medium" style="background-color:#242424"
           >로그인</router-link>
+          <div v-if="isLoggedIn" class="text-[50px] font-semibold" style="color:#FFFFFF">환영합니다</div>
         </div>
       </div>
     </article>
@@ -59,7 +61,19 @@
 
 <script>
 export default {
-  name: 'MainContent1'
+  name: 'MainContent1',
+  data(){
+    return{
+      isLoggedIn: false,
+      userName: '',
+    };
+  },
+  mounted() {
+    let loggedIn = sessionStorage.getItem("logg");
+    let name = sessionStorage.getItem("name");
+    this.isLoggedIn = loggedIn;
+    this.userName = name;
+  },
 };
 </script>
 

@@ -32,9 +32,13 @@ export default {
       selectedCheck: 1,
     };
   },
+  mounted() {
+        let checkNum = sessionStorage.getItem('checkNum');
+        this.selectedCheck = checkNum;
+    },     
   methods: {
     getStyle(checkNumber) {
-      if (this.selectedCheck === checkNumber) {
+      if (this.selectedCheck == checkNumber) {
         return {
           background: '#E1E7FD 0% 0% no-repeat padding-box',
           color: '#4F44F0'
@@ -48,6 +52,14 @@ export default {
     },
     change(checkNumber) {
       this.selectedCheck = checkNumber;
+      if(this.selectedCheck == 1){
+        sessionStorage.setItem('checkNum', checkNumber);
+        location.href='/credit';
+      }
+      else{
+        sessionStorage.setItem('checkNum', checkNumber);
+        location.href='/creditlog';
+      }
     }
   }
 };

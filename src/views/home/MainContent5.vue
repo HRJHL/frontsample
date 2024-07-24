@@ -12,7 +12,12 @@
           </span>
         </article>
         <article class="">
-          <button class="rounded-[44px] text-white px-6 py-3 text-center text-[21px] 
+          <button v-if="!isLoggedIn" class="rounded-[44px] text-white px-6 py-3 text-center text-[21px] 
+          font-medium w-[206px] h-[65px] sm:text-[15px]" onclick="location.href='/login'" 
+          style="background-color: #6250FF">
+          메시지 바로가기
+          </button>
+          <button v-if="isLoggedIn" class="rounded-[44px] text-white px-6 py-3 text-center text-[21px] 
           font-medium w-[206px] h-[65px] sm:text-[15px]" onclick="location.href='/message'" 
           style="background-color: #6250FF">
           메시지 바로가기
@@ -25,7 +30,19 @@
 
 <script>
 export default {
-  name: 'MainContent5'
+  name: 'MainContent5',
+  data(){
+    return{
+      isLoggedIn: false,
+      userName: '',
+    };
+  },
+  mounted() {
+    let loggedIn = sessionStorage.getItem("logg");
+    let name = sessionStorage.getItem("name");
+    this.isLoggedIn = loggedIn;
+    this.userName = name;
+  },
 };
 </script>
 

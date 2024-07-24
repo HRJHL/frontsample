@@ -43,7 +43,7 @@
           </div>
         </div>
         <div class="">
-          <button onclick="location.href='/pay'" class="flex w-full rounded-[8px] py-[19px] zl:py-[10px] text-[20px] zl:text-[14px] font-regular justify-center"
+          <button @click="Pay1()" class="flex w-full rounded-[8px] py-[19px] zl:py-[10px] text-[20px] zl:text-[14px] font-regular justify-center"
           style="background: #5146F0 0% 0% no-repeat padding-box; color:white">
             구매하기
           </button>
@@ -82,7 +82,7 @@
           </div>
         </div>
         <div class="">
-          <button onclick="location.href='/pay'" class="flex w-full rounded-[8px] py-[19px] zl:py-[10px] text-[20px] zl:text-[14px] font-regular justify-center"
+          <button @click="Pay2()" class="flex w-full rounded-[8px] py-[19px] zl:py-[10px] text-[20px] zl:text-[14px] font-regular justify-center"
           style="background: #5146F0 0% 0% no-repeat padding-box; color:white">
             구매하기
           </button>
@@ -124,7 +124,7 @@
           </div>
         </div>
         <div class="">
-          <button onclick="location.href='/pay'" class="flex w-full rounded-[8px] py-[19px] zl:py-[10px] text-[20px] zl:text-[14px] font-regular justify-center"
+          <button @click="Pay3()" class="flex w-full rounded-[8px] py-[19px] zl:py-[10px] text-[20px] zl:text-[14px] font-regular justify-center"
           style="background: #5146F0 0% 0% no-repeat padding-box; color:white">
             구매하기
           </button>
@@ -163,7 +163,7 @@
           </div>
         </div>
         <div class="">
-          <button onclick="location.href='/pay'" class="flex w-full rounded-[8px] py-[19px] zl:py-[10px] text-[20px] zl:text-[14px] font-regular justify-center"
+          <button @click="Pay4()" class="flex w-full rounded-[8px] py-[19px] zl:py-[10px] text-[20px] zl:text-[14px] font-regular justify-center"
           style="background: #5146F0 0% 0% no-repeat padding-box; color:white">
             구매하기
           </button>
@@ -181,7 +181,29 @@
 
 <script>
 export default {
-  name: 'CreditContent2'
+  name: 'CreditContent2',
+  methods : {
+    Pay1() {
+      sessionStorage.setItem("order", "330,000 크레딧");
+      sessionStorage.setItem("money", '30000');
+      window.location.href = '/pay';
+    },
+    Pay2() {
+      sessionStorage.setItem("order", "110,000 크레딧");
+      sessionStorage.setItem("money", '10000');
+      window.location.href = '/pay';
+    },
+    Pay3() {
+      sessionStorage.setItem("order", "330,000 크레딧");
+      sessionStorage.setItem("money", '30000');
+      window.location.href = '/pay';
+    },
+    Pay4() {
+      sessionStorage.setItem("order", "110,000 크레딧");
+      sessionStorage.setItem("money", '10000');
+      window.location.href = '/pay';
+    }
+  }
 };
 </script>
 

@@ -8,8 +8,10 @@
           </router-link>
         </div>
         <div class="flex w-full items-center gap-[5%] sm:gap-[40px]">
-          <router-link to="/message" class="text-[16px] font-medium">메시지</router-link>
-          <router-link to="/credit" class="text-[16px] font-medium">크레딧</router-link>
+          <router-link v-if="isLoggedIn" to="/message" class="text-[16px] font-medium">메시지</router-link>
+          <router-link v-if="isLoggedIn" to="/credit" class="text-[16px] font-medium">크레딧</router-link>
+          <router-link v-if="!isLoggedIn" to="/login" class="text-[16px] font-medium">메시지</router-link>
+          <router-link v-if="!isLoggedIn" to="/login" class="text-[16px] font-medium">크레딧</router-link>
         </div>
       </nav>
       </div>
@@ -23,7 +25,19 @@
 
 <script>
 export default {
-  name: 'AppFooter'
+  name: 'AppFooter',
+  data(){
+    return{
+      isLoggedIn: false,
+      userName: '',
+    };
+  },
+  mounted() {
+    let loggedIn = sessionStorage.getItem("logg");
+    let name = sessionStorage.getItem("name");
+    this.isLoggedIn = loggedIn;
+    this.userName = name;
+  },
 };
 </script>
 
