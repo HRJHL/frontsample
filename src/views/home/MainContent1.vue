@@ -69,6 +69,7 @@ export default {
     };
   },
   mounted() {
+    sessionStorage.setItem('checkNum', 1);
     let loggedIn = sessionStorage.getItem("logg");
     let name = sessionStorage.getItem("name");
     this.isLoggedIn = loggedIn;

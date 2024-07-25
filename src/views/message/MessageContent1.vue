@@ -51,6 +51,9 @@ export default {
       selectedCheck: 1,
     };
   },
+  mounted() {
+    sessionStorage.setItem('checkNum', 1);
+  },
   methods: {
     getStyle(checkNumber) {
       if (this.selectedCheck === checkNumber) {

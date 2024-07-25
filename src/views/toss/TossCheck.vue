@@ -7,28 +7,34 @@
     </div>
   </section>
   <section class="section px-[10%] pt-[20px] pb-[180px]" style="background-color:#F2F4F8">
-    <div class="container flex flex-col gap-[10px] text-[24px] font-normal">
-      <div class="flex gap-[10px]">
+    <div class="flex flex-col gap-[10px] text-[24px] font-normal md:text-[16px] sm:text-[14px]">
+      <div class="flex gap-[10px] sm:flex-col">
+        <div class="flex-1 flex gap-[10px]">
       <button class="button flex-1 is-link border-[4px] px-[20px] py-[10px]" style="border: 1px solid #CECECE; color:#7B7B7B;" v-on:click="pay('카드')">일반결제창</button>
       <button class="button flex-1 is-link border-[4px] px-[20px]" style="border: 1px solid #CECECE; color:#7B7B7B;" v-on:click="pay('가상계좌')">가상계좌</button>
+        </div>
+        <div class="flex-1 flex gap-[10px]">
       <button class="button flex-1 is-link border-[4px] px-[20px]" style="border: 1px solid #CECECE; color:#7B7B7B;" v-on:click="pay('계좌이체')">계좌이체</button>
       <button class="button flex-1 is-link border-[4px] px-[20px]" style="border: 1px solid #CECECE; color:#7B7B7B;" v-on:click="pay('휴대폰')">휴대폰</button>
+        </div>
       </div>
-    <div class="flex gap-[10px]">
+    <div class="flex gap-[10px] sm:flex-col">
+      <div class="flex-1 flex gap-[10px]">
       <button class="button flex-1 is-link border-[4px] px-[20px] py-[10px]" style="border: 1px solid #CECECE; color:#7B7B7B;" v-on:click="pay('문화상품권')">문화상품권</button>
       <button class="button flex-1 is-link border-[4px] px-[20px]" style="border: 1px solid #CECECE; color:#7B7B7B;" v-on:click="pay('도서문화상품권')">도서문화상품권</button>
+      </div>
+      <div class="flex-1 flex gap-[10px]">
       <button class="button flex-1 is-link border-[4px] px-[20px]" style="border: 1px solid #CECECE; color:#7B7B7B;" v-on:click="pay('게임문화상품권')">게임문화상품권</button>
-      <div class="flex-1 px-[20px]"></div>
+      <div class="flex-1 lg:hidden md:hidden px-[20px]"></div>
+      </div>
     </div>
     </div>
   </section>
 
-  <!-- 선택한 페이지 렌더링 -->
   <router-view />
 </template>
 
 <script>
-import axios from 'axios';
 import { loadTossPayments } from "@tosspayments/payment-sdk";
 const clientKey = "test_ck_Z61JOxRQVEnMKwkkDyw0rW0X9bAq";
 
@@ -45,6 +51,7 @@ export default {
     };
   },
   mounted() {
+    sessionStorage.setItem('checkNum', 1);
     let loggedIn = sessionStorage.getItem("logg");
     let name = sessionStorage.getItem("name");
     let order = sessionStorage.getItem("order");
@@ -77,17 +84,6 @@ export default {
               alert(error.message);
             }
           });
-          axios.post('http://127.0.0.1:8000/credit', {
-                amount: amt,
-                orderName: this.order,
-                customerName: this.userName,
-                })
-                .then(response => {
-                    console.log(response.data);
-                })
-                .catch(error => {
-                    console.error('Server responded with error:', error.response.data);
-            });
       });
     },
   },

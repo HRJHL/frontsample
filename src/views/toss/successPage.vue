@@ -24,15 +24,25 @@ export default {
     data(){
         return{
             currentRoute: window.location.pathname,
-            responseData: ''
+            responseData: '',
+            userName: '',
+            order: '',
+            money: '',
         }
 
     }, 
     mounted() {
+          let name = sessionStorage.getItem("name");
+    let order = sessionStorage.getItem("order");
+    let money = sessionStorage.getItem("money");
+    this.userName = name;
+    this.order = order;
+    this.money = money;
+
         this.success();
         setTimeout(function() {
         window.location.href = '/';
-    }, 300000);
+    }, 3000);
     
     },    
     methods: {
@@ -74,6 +84,19 @@ export default {
                 this.responseData = err.response.data
                 console.error("[error] Item Insert Error!", err.response.data);
             })
+
+            axios.post('http://127.0.0.1:8000/credit', {
+                amount: this.money,
+                orderName: this.order,
+                customerName: this.userName,
+                })
+                .then(response => {
+                    console.log(response.data);
+                })
+                .catch(error => {
+                    console.error('Server responded with error:', error.response.data);
+            });
+
         }
     }
 }

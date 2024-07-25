@@ -182,6 +182,9 @@
 <script>
 export default {
   name: 'CreditContent2',
+  mounted() {
+    sessionStorage.setItem('checkNum', 1);
+  },
   methods : {
     Pay1() {
       sessionStorage.setItem("order", "330,000 크레딧");
