@@ -126,8 +126,8 @@
         </article>
 
         <article class="flex-1 md:absolute sm:absolute md:h-[1500px] sm:h-[1500px] md:flex sm:flex">
-          <!--위 반응형-->
-          <div class="device sticky top-20 md:top-[120px] sm:top-[150px] flex h-[775px] rounded-[22px] mb-[40px]"
+          <!--디바이스-->
+          <div class="device sticky top-[100px] md:top-[120px] sm:top-[150px] flex h-[40%] rounded-[22px] mb-[40px]"
           style="background-color:#EAF8FF; border: 5px solid #4D4D4D;">
           <img src="@/assets/icon2/bottom_arrow.svg" class="btnEvent w-[46px] h-[46px] rotate-90 mt-[27px] ml-[18px]"/>
          <div class="flex w-full flex-col px-5 py-20 gap-[20px]">
@@ -148,7 +148,7 @@
          </div>
           </div>
           <div @click="handleClick" ref ="checkElement" class="checkbtn btnEvent sticky top-40 md:flex md:w-full md:justify-end w-[0px] h-[0px]">
-            <img src="@/assets/icon2/bottom_arrow.svg" class="checkdevice w-[0px] h-[0px] rotate-90 mt-[27px] ml-[18px]"/>
+            <img src="@/assets/icon2/bottom_arrow.svg" class="checkdevice w-[0px] h-[0px] rotate-90"/>
           </div>
         </article>
       </section>

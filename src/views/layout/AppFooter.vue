@@ -15,12 +15,12 @@
         </div>
       </nav>
       </div>
-      <div class="flex justify-between px-[12.5%] pt-[40px] pb-[92px]">
-      <div class="flex flex-col" style="background-color:#222222;">
-        <span class="text-[16px] sm:text-[12px] font-medium" style="color:#D6D6D6">문의 사항이 있으신가요? 텔레그램을 통해 고객센터로 문의해 보세요.</span>
-        <span class="text-[16px] sm:text-[12px] font-medium" style="color:#F0F0F0">Telegram: @shdevelope</span>
+      <div class="flex justify-between md:flex-col sm:flex-col px-[12.5%] pt-[40px] pb-[92px]">
+      <div class="flex flex-col md:mb-[20px] sm:mb-[20px]" style="background-color:#222222;">
+        <span class="text-[16px] md:text-[14px] sm:text-[12px] font-medium" style="color:#D6D6D6">문의 사항이 있으신가요? 텔레그램을 통해 고객센터로 문의해 보세요.</span>
+        <span class="text-[16px] md:text-[14px] sm:text-[12px] font-medium" style="color:#F0F0F0">Telegram: @shdevelope</span>
       </div>
-      <router-link v-if="isLoggedIn" to="/" @click="logout" class="text-[16px] sm:text-[12px] font-semibold">로그아웃</router-link>
+      <router-link v-if="isLoggedIn" to="/" @click="logout" class="text-[16px] md:text-[14px] sm:text-[12px] font-semibold">로그아웃</router-link>
     <router-view />
       </div>
   </div>

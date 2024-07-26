@@ -3,18 +3,18 @@
   <form @submit.prevent="login">
     <div class="flex w-full flex-col items-center justify-center">
       <!-- 배너 이미지-->
-      <img src="@/assets/sendgo/logo.svg" class="w-[300px] h-auto mb-[80px]">
+      <img src="@/assets/sendgo/logo.svg" class="w-[300px] lg:w-[250px] md:w-[200px] sm:w-[150px] h-auto mb-[80px] lg:mb-[60px] md:mb-[50px] sm:mb-[40px]">
     </div>
-    <div class="flex flex-col mb-[30px] items-start gap-[20px]">
+    <div class="flex flex-col mb-[30px] sm:mb-[20px] items-start gap-[20px] sm:gap-[10px]">
       <!--로그인 폼-->
-      <input type="text" v-model="identity" placeholder="아이디" class="text-[20px] w-full pl-[10px] py-[5px] rounded-[8px]" style="border: 1px solid #CECECE;">
-      <input type="password" v-model="password" placeholder="비밀번호" class="text-[20px] w-full pl-[10px] py-[5px] rounded-[8px]" style="border: 1px solid #CECECE;">
+      <input type="text" v-model="identity" placeholder="아이디" class="text-[20px] sm:text-[14px] w-full pl-[10px] py-[5px] rounded-[8px]" style="border: 1px solid #CECECE;">
+      <input type="password" v-model="password" placeholder="비밀번호" class="text-[20px] sm:text-[14px] w-full pl-[10px] py-[5px] rounded-[8px]" style="border: 1px solid #CECECE;">
   </div>
-  <div class="flex justify-center rounded-[8px] mb-[30px]" style="background-color:#4F44F0;">
-    <button type="submit" class="font-semibold px-[20px] py-[15px]" style="color:#FFFFFF">로그인</button>
+  <div class="flex justify-center rounded-[8px] mb-[30px] sm:mb-[20px]" style="background-color:#4F44F0;">
+    <button type="submit" class="font-semibold px-[20px] py-[15px] sm:text-[14px] sm:py-[10px]" style="color:#FFFFFF">로그인</button>
   </div>
-  <div class="flex justify-center">
-    계정이 없으신가요?&nbsp; <router-link to="/register" class="font-semibold border-b" style="color:#4F44F0; border-color:#4F44F0;">회원가입하기</router-link>
+  <div class="flex justify-center sm:text-[10px]">
+    계정이 없으신가요?&nbsp;<router-link to="/register" class="font-semibold border-b" style="color:#4F44F0; border-color:#4F44F0;">회원가입하기</router-link>
   </div>
   </form>
 </div>

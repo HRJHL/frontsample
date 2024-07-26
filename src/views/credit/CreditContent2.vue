@@ -5,13 +5,13 @@
       <div class="flex flex-col gap-[18px]">
       <div class="text-center text-[45px] font-bold">크레딧 구매
       </div>
-      <div class="text-center text-[19px] sm:text-[12px] font-regulaar" style="color:#7B7B7B">
+      <div class="text-center text-[19px] sm:text-[12px] font-regular" style="color:#7B7B7B">
         메시지 전송을 위해 사용할 크레딧 상품을 선택해 주세요
         </div>
         </div>
-      <div class="conbox flex flex-row gap-[24px] zl:gap-[18px] xl:flex-col lg:flex-col">
+      <div class="conbox flex flex-row gap-[24px] zl:gap-[18px] xl:flex-col lg:flex-col md:flex-col sm:flex-col">
         <!-- 1번-->
-        <div class="flex-1 flex flex-row gap-[24px] zl:gap-[18px]">
+        <div class="flex-1 flex flex-row md:flex-col sm:flex-col gap-[24px] zl:gap-[18px]">
         <div class="flex-1 rounded-[8px] px-[32px] py-[40px]" 
         style = "background: #FFFFFF 0% 0% no-repeat padding-box; box-shadow: 0px 10px 10px #00000008;">
         <div class="text-[30px] zl:text-[25px] font-bold mb-[16px] zl:mb-[12px]">
@@ -92,7 +92,7 @@
         </div>
 
         <!-- 3번-->
-        <div class="flex-1 flex flex-row gap-[24px] zl:gap-[18px]">
+        <div class="flex-1 flex flex-row md:flex-col sm:flex-col gap-[24px] zl:gap-[18px]">
         <div class="flex-1 rounded-[8px] px-[32px] py-[40px]" 
         style = "background: #FFFFFF 0% 0% no-repeat padding-box; box-shadow: 0px 10px 10px #00000008;">
         <div class="text-[30px] zl:text-[25px] font-bold mb-[16px] zl:mb-[12px]">
@@ -211,17 +211,5 @@ export default {
 </script>
 
 <style scoped>
-
-@media (max-width: 768px) {
-
-  .conbox{
-    margin-left: 0px;
-    width: 100%;
-    overflow-x: scroll;
-    overflow: auto;
-    white-space: nowrap;
-  }
-}
-
 
 </style>

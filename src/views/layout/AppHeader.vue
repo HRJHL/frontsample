@@ -9,15 +9,15 @@
         </div>
         <div class="flex w-full items-center">
         <div class="navbar flex-1 flex gap-[20%] md:gap-[20%] sm:gap-[20%]">
-          <router-link v-if="isLoggedIn" to="/message" class="message text-[20px] sm:text-[14px] font-semibold">메시지</router-link>
-          <button v-if="!isLoggedIn" onclick="location.href='/login'" class="text-[20px] sm:text-[14px] font-semibold">메시지</button>
-          <router-link v-if="isLoggedIn" to="/credit" class="credit text-[20px] sm:text-[14px] font-semibold">크레딧</router-link>
-          <button v-if="!isLoggedIn" onclick="location.href='/login'" class="text-[20px] sm:text-[14px] font-semibold">크레딧</button>
+          <router-link v-if="isLoggedIn" to="/message" class="message text-[20px] sm:text-[10px] font-semibold">메시지</router-link>
+          <button v-if="!isLoggedIn" onclick="location.href='/login'" class="text-[20px] sm:text-[10px] font-semibold">메시지</button>
+          <router-link v-if="isLoggedIn" to="/credit" class="credit text-[20px] sm:text-[10px] font-semibold">크레딧</router-link>
+          <button v-if="!isLoggedIn" onclick="location.href='/login'" class="text-[20px] sm:text-[10px] font-semibold">크레딧</button>
 
         </div>
-        <div class="flex-1 flex justify-end items-center gap-[10px] pr-[100px]">
-          <div v-if="isLoggedIn" class="text-[20px] sm:text-[14px] font-semibold">{{ userName }}님</div>
-          <router-link v-if="!isLoggedIn" to="/login" class="text-[20px] sm:text-[14px] font-semibold">로그인</router-link>
+        <div class="flex-1 flex justify-end items-center gap-[10px] pr-[100px]  md:pr-[50px] sm:pr-[50px]">
+          <div v-if="isLoggedIn" class="text-[20px] sm:text-[10px] font-semibold">{{ userName }}님</div>
+          <router-link v-if="!isLoggedIn" to="/login" class="text-[20px] sm:text-[10px] font-semibold">로그인</router-link>
         </div>
         </div>
       </nav>

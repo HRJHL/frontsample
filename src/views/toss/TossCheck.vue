@@ -1,13 +1,13 @@
 <template>
   <section class="">
     <div class="flex w-full" style="background-color:#F2F4F8">
-      <div class="px-[10%] pt-[10%]">
-        <h1 class="text-[20px] font-semibold">결제방법</h1>
+      <div class="px-[12.5%] pt-[10%]">
+        <h1 class="text-[20px] md:text-[16px] sm:text-[14px] font-semibold">결제방법</h1>
       </div>
     </div>
   </section>
-  <section class="section px-[10%] pt-[20px] pb-[180px]" style="background-color:#F2F4F8">
-    <div class="flex flex-col gap-[10px] text-[24px] font-normal md:text-[16px] sm:text-[14px]">
+  <section class="section px-[12.5%] pt-[20px] pb-[180px]" style="background-color:#F2F4F8">
+    <div class="flex flex-col gap-[10px] text-[24px] font-normal md:text-[12px] sm:text-[10px]">
       <div class="flex gap-[10px] sm:flex-col">
         <div class="flex-1 flex gap-[10px]">
       <button class="button flex-1 is-link border-[4px] px-[20px] py-[10px]" style="border: 1px solid #CECECE; color:#7B7B7B;" v-on:click="pay('카드')">일반결제창</button>

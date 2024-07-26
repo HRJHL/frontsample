@@ -1,9 +1,10 @@
 <template>
   <div class="flex flex-col items-center justify-center px-[12.5%] pt-[109px] pb-[200px]" style="background-color: #F2F4F8">
+    <div class="mb-[50px] text-[50px] sm:text-[30px] font-bold">크레딧 구매목록</div>
     <div v-if="loading">Loading...</div>
     <div v-else class="w-full">
       <div v-if="credits.length" class="w-full">
-  <div class="flex flex-col w-full">
+  <div class="flex flex-col w-full sm:text-[12px]">
     <div class="flex flex-row border-b font-bold p-2" style="background-color:#E1E7FD">
       <div class="flex-1 text-center">결제금액</div>
       <div class="flex-1 text-center">구매한 상품</div>
@@ -39,7 +40,6 @@ export default {
   mounted() {
     sessionStorage.setItem('checkNum', 2);
     let name = sessionStorage.getItem("name");
-    console.log(name);
     this.customerName = name;
     this.fetchCredits();
   },
@@ -49,7 +49,6 @@ export default {
         const response = await axios.post('http://127.0.0.1:8000/datab', {
           customerName: this.customerName,
         });
-        console.log(response.data);
         this.credits = response.data.data;
         this.loading = false; 
       } catch (error) {
