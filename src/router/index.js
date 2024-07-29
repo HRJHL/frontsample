@@ -8,6 +8,9 @@ import Register from '@/views/Register.vue';
 import Login from '@/views/Login.vue';
 import Pay from '@/views/Pay.vue';
 import SuccessPage from '@/views/SuccessPage.vue';
+import SearchL from '@/views/SearchL.vue';
+import SearchP from '@/views/SearchP.vue';
+import UserPage from '@/views/UserPage.vue';
 
 const routes = [
   {
@@ -49,7 +52,22 @@ const routes = [
     path: '/success',
     name: 'Success',
     component: SuccessPage
-  }
+  },
+  {
+    path: '/searchL',
+    name: 'SearchL',
+    component: SearchL
+  },
+  {
+    path: '/searchP',
+    name: 'SearchP',
+    component: SearchP
+  },
+  {
+    path: '/userpage',
+    name: 'UserPage',
+    component: UserPage
+  },
 ];
 
 const router = createRouter({

@@ -16,7 +16,12 @@
 
         </div>
         <div class="flex-1 flex justify-end items-center gap-[10px] pr-[100px] md:pr-[50px] sm:pr-[50px]">
-          <div v-if="isLoggedIn" class="text-[20px] sm:text-[10px] font-semibold">{{ userName }}님</div>
+          <div v-if="isLoggedIn" @click="state()" class="text-[20px] mr-[45px] sm:text-[10px] font-semibold">{{ userName }}님</div>
+          <div v-if="isState" class="absolute border shoadow top-[80px] text-[20px] gap-[5px] px-[40px] py-[10px] " style="background-color: #FFFFFF">
+            <div @click="user()">회원 정보</div>
+            <div>--------</div>
+            <div @click="logout()">로그아웃</div>
+          </div>
           <router-link v-if="!isLoggedIn" to="/login" class="text-[20px] sm:text-[10px] font-semibold">로그인</router-link>
         </div>
         </div>
@@ -37,6 +42,7 @@ export default {
   data(){
     return{
       isLoggedIn: false,
+      isState: false,
       userName: '',
     };
   },
@@ -45,8 +51,32 @@ export default {
     let name = sessionStorage.getItem("name");
     this.isLoggedIn = loggedIn;
     this.userName = name;
+    let state = sessionStorage.getItem("state");
+    this.isState = state;
   },
   methods: {
+    state(){
+      let state;
+
+    if (this.isState === false) {
+        sessionStorage.setItem("state", true);
+        state = sessionStorage.getItem("state");
+        this.isState = state === 'true';
+    } else {
+        sessionStorage.setItem("state", false);
+        state = sessionStorage.getItem("state");
+        this.isState = state === 'true';
+    }
+    },
+    logout() {
+      sessionStorage.clear();
+      this.isState = false;
+      window.location.href ='/';
+      },
+    user(){
+      this.isState = false;
+      window.location.href="/userpage";
+    }
   },
 };
 

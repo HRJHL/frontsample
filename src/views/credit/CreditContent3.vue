@@ -1,6 +1,6 @@
 <template>
   <div class="flex flex-col items-center justify-center px-[12.5%] pt-[109px] pb-[200px]" style="background-color: #F2F4F8">
-    <div class="mb-[50px] text-[50px] sm:text-[30px] font-bold">크레딧 구매목록</div>
+    <div class="mb-[50px] text-[45px] sm:text-[30px] font-bold">크레딧 구매목록</div>
     <div v-if="loading">Loading...</div>
     <div v-else class="w-full">
       <div v-if="credits.length" class="w-full">

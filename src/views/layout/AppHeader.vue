@@ -16,7 +16,7 @@
 
         </div>
         <div class="flex-1 flex justify-end items-center gap-[10px] pr-[100px]  md:pr-[50px] sm:pr-[50px]">
-          <div v-if="isLoggedIn" class="text-[20px] sm:text-[10px] font-semibold">{{ userName }}님</div>
+          <div v-if="isLoggedIn" class="text-[20px] mr-[45px] sm:text-[10px] font-semibold">{{ userName }}님</div>
           <router-link v-if="!isLoggedIn" to="/login" class="text-[20px] sm:text-[10px] font-semibold">로그인</router-link>
         </div>
         </div>
