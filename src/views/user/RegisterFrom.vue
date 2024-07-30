@@ -19,9 +19,9 @@
           </div>
         </div>
         <div class="font-semibold">아이디</div>
-        <input type="text" v-model="identity" placeholder="영문포함 숫자 특수문자" class="text-[20px] md:text-[14px] sm:text-[10px] w-full pl-[10px] py-[5px] rounded-[8px]" style="border: 1px solid #CECECE;" required>
+        <input type="text" v-model="identity" maxlength="16" placeholder="16글자 이하로 작성" class="text-[20px] md:text-[14px] sm:text-[10px] w-full pl-[10px] py-[5px] rounded-[8px]" style="border: 1px solid #CECECE;" required>
         <div class="font-semibold">비밀번호</div>
-        <input type="password" v-model="password" placeholder="***" class="text-[20px] md:text-[14px] sm:text-[10px] w-full pl-[10px] py-[5px] rounded-[8px]" style="border: 1px solid #CECECE;" required>
+        <input type="password" v-model="password" maxlength="16" placeholder="16글자 이하로 작성" class="text-[20px] md:text-[14px] sm:text-[10px] w-full pl-[10px] py-[5px] rounded-[8px]" style="border: 1px solid #CECECE;" required>
       </div>
       <div class="flex justify-center rounded-[8px] mb-[30px]" style="background-color:#4F44F0;">
         <button type="submit" v-if="isRigist" class="font-semibold px-[20px] py-[15px]" style="color:#FFFFFF">가입하기</button>

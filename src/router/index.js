@@ -11,6 +11,7 @@ import SuccessPage from '@/views/SuccessPage.vue';
 import SearchL from '@/views/SearchL.vue';
 import SearchP from '@/views/SearchP.vue';
 import UserPage from '@/views/UserPage.vue';
+import UserPage2 from '@/views/UserPage2.vue';
 
 const routes = [
   {
@@ -67,6 +68,11 @@ const routes = [
     path: '/userpage',
     name: 'UserPage',
     component: UserPage
+  },
+  {
+    path: '/userpage2',
+    name: 'UserPage2',
+    component: UserPage2
   },
 ];
 

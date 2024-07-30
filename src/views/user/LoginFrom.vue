@@ -46,13 +46,16 @@ export default {
       })
       .then(response => {
         const userName = response.data.user.name;
+        const useremail = response.data.user.email;
         console.log(userName);
         sessionStorage.setItem("logg", true);
         sessionStorage.setItem('name', userName);
+        sessionStorage.setItem('email', useremail);
         window.location.href ='/message';
       })
       .catch(error => {
         console.error(error);
+        alert("아이디 혹은 비밀번호가 틀렸습니다.")
       });
     },
     Sid(){

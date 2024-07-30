@@ -5,6 +5,9 @@
         <!-- 배너 이미지-->
         <img src="@/assets/sendgo/logo.svg" class="w-[300px] lg:w-[250px] md:w-[200px] sm:w-[150px] h-auto mb-[80px] lg:mb-[60px] md:mb-[50px] sm:mb-[40px]">
       </div>
+      <div v-if="!isSearch && isrun" class="flex justify-center">
+      <img src="@/assets/sendgo/images.png" class="w-[30px] h-auto rotate-img">
+    </div>
       <div class="text-[20px] font-bold mb-[10px]">
         비밀번호 찾기
       </div>
@@ -40,10 +43,12 @@ export default {
       identity: '',
       errorMessage: '',
       isSearch : false,
+      isrun: false,
     };
   },
   methods: {
     findId() {
+      this.isrun = true;
       axios.post('http://127.0.0.1:8000/searchP', {
         identity: this.identity,
         email: this.email,
@@ -61,9 +66,24 @@ export default {
         } else {
           this.errorMessage = '서버 에러가 발생했습니다. 나중에 다시 시도해주세요.';
         }
+        this.isrun = false;
         console.error(error);
       });
     }
   }
 };
 </script>
+<style scoped>
+.rotate-img {
+  animation: rotate 1s linear infinite;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+</style>
