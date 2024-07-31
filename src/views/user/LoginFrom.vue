@@ -47,10 +47,12 @@ export default {
       .then(response => {
         const userName = response.data.user.name;
         const useremail = response.data.user.email;
+        const userprofile = response.data.user.profile_image;
         console.log(userName);
         sessionStorage.setItem("logg", true);
         sessionStorage.setItem('name', userName);
         sessionStorage.setItem('email', useremail);
+        sessionStorage.setItem('profile', userprofile);
         window.location.href ='/message';
       })
       .catch(error => {

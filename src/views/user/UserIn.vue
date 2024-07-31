@@ -5,6 +5,12 @@
       <img src="@/assets/sendgo/logo.svg" class="w-[300px] lg:w-[250px] md:w-[200px] sm:w-[150px] h-auto mb-[40px] lg:mb-[30px] md:mb-[20px] sm:mb-[20px]">
     </div>
     <div class="flex justify-center mb-[50px] text-[45px] font-bold">회원님의 정보</div>
+    <div class="flex justify-start mb-[50px]">
+      <div class="px-[20px] py-[20px] rounded-[22px]" style="background-color:#0000001A">
+        <img :src="`http://127.0.0.1:8000/storage/${profile}`" v-if="profile" class="w-[100px] h-auto">
+        <img v-else src="@/assets/icon2/person.svg" class="w-[100px] h-auto" alt="Default Image">
+      </div>
+    </div>
     <div class="flex flex-row mb-[50px] text-[32px] xl:text-[20px] lg:text-[18px] md:text-[14px] sm:text-[8px] border-t" style="border-color:#0000002E">
       <div class="flex-col w-[220px] font-semibold" style="background-color:#F0F0F0">
         <div class="flex px-[20px] py-[10px] border-b" style="border-color:#0000002E">이름</div>
@@ -43,13 +49,16 @@ export default {
       upw: '',
       uemail: '',
       ucreate: '',
+      profile: '',
     };
   },
   mounted() {
     let name = sessionStorage.getItem("name");
     let email = sessionStorage.getItem("email");
+    let profile = sessionStorage.getItem("profile");
     this.name = name;
     this.email = email;
+    this.profile = profile;
     this.fetchCredits();
   },
   methods: {
