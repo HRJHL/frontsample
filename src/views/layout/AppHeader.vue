@@ -43,8 +43,6 @@ export default {
   methods: {
     logout() {
       sessionStorage.clear();
-      console.log(this.isLoggedIn);
-      console.log(this.name);
       window.location.href ='/';
       },
   },

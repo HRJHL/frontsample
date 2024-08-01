@@ -2,16 +2,30 @@
 <div class="w-full px-[30%] lg:px-[20%] md:px-[15%] sm:px-[5%] py-[10%]" style="background-color:#FFFFF">
     <div class="flex w-full flex-col items-center justify-center">
       <!-- 배너 이미지-->
-      <img src="@/assets/sendgo/logo.svg" class="w-[300px] lg:w-[250px] md:w-[200px] sm:w-[150px] h-auto mb-[40px] lg:mb-[30px] md:mb-[20px] sm:mb-[20px]">
+      <img src="@/assets/sendgo/logo.svg" class="w-[300px] lg:w-[250px] md:w-[200px] sm:w-[100px] h-auto mb-[40px] lg:mb-[30px] md:mb-[20px] sm:mb-[20px]">
     </div>
-    <div class="flex justify-center mb-[50px] text-[45px] font-bold">회원님의 정보</div>
-    <div class="flex justify-start mb-[50px]">
+    <div class="flex justify-center text-[45px] md:text-[35px] sm:text-[25px] mb-[30px] font-bold">회원님의 정보</div>
+    <div class="flex justify-start mb-[50px] md:mb-[30px] sm:mb-[20px]">
       <div class="px-[20px] py-[20px] rounded-[22px]" style="background-color:#0000001A">
-        <img :src="`http://127.0.0.1:8000/storage/${profile}`" v-if="profile" class="w-[100px] h-auto">
+        <img :src="`http://127.0.0.1:8000/storage/${profile}`" v-if="profile" class="w-[100px] md:w-[80px] sm:w-[50px] h-auto">
         <img v-else src="@/assets/icon2/person.svg" class="w-[100px] h-auto" alt="Default Image">
       </div>
+      <div class="flex flex-col">
+        <div class="flex flex-row">
+      <div class="text-[22px] font-semibold px-[20px] pt-[15px]">결제 크레딧 :</div>
+      <div class="text-[22px] pt-[15px]">{{ sumOfExtractedNumbers}},000 크레딧</div>
+        </div>
+        <div class="flex flex-row">
+      <div class="text-[22px] font-semibold px-[20px] pt-[10px]">보유 크레딧 :</div>
+      <div class="text-[22px] pt-[10px]">{{ sumOfExtractedNumbers}},000 크레딧</div>
+        </div>
+        <div class="flex flex-row">
+      <div class="text-[22px] font-semibold px-[20px] pt-[10px]">사용 크레딧 :</div>
+      <div class="text-[22px] pt-[10px]">0 크레딧</div>
+        </div>
+      </div>
     </div>
-    <div class="flex flex-row mb-[50px] text-[32px] xl:text-[20px] lg:text-[18px] md:text-[14px] sm:text-[8px] border-t" style="border-color:#0000002E">
+    <div class="flex flex-row mb-[50px] md:mb-[30px] sm:mb-[20px] text-[32px] xl:text-[20px] lg:text-[18px] md:text-[14px] sm:text-[8px] border-t" style="border-color:#0000002E">
       <div class="flex-col w-[220px] font-semibold" style="background-color:#F0F0F0">
         <div class="flex px-[20px] py-[10px] border-b" style="border-color:#0000002E">이름</div>
         <div class="flex px-[20px] py-[10px] border-b" style="border-color:#0000002E">아이디</div>
@@ -28,8 +42,8 @@
       </div>
   </div>
   <div class="flex flex-row justify-center gap-[40px]">
-    <button @click="change()" class="text-[20px] px-[20px] py-[20px] font-semibold rounded-[8px]" style="background-color:#4E81FF; color:#FFFFFF">정보 변경</button>
-    <button @click="remove()" class="text-[20px] px-[20px] py-[20px] font-semibold rounded-[8px]" style="background-color:#4E81FF; color:#FFFFFF">회원 탈퇴</button>
+    <button @click="change()" class="text-[20px] sm:text-[14px] px-[20px] py-[20px] sm:py-[10px] font-semibold rounded-[8px]" style="background-color:#4E81FF; color:#FFFFFF">정보 변경</button>
+    <button @click="remove()" class="text-[20px] sm:text-[14px] px-[20px] py-[20px] sm:py-[10px] font-semibold rounded-[8px]" style="background-color:#4E81FF; color:#FFFFFF">회원 탈퇴</button>
   </div>
 </div>
 </template>
@@ -41,10 +55,12 @@ export default {
   data() {
     return {
       users: [],
+      credits: [],
       loading: true,
       error: null,
       name: '',
       uname: '',
+      customerName: '',
       uid: '',
       upw: '',
       uemail: '',
@@ -58,11 +74,31 @@ export default {
     let profile = sessionStorage.getItem("profile");
     this.name = name;
     this.email = email;
-    this.profile = profile;
+    if(profile=="a"){
+      this.profile = null;
+    }else{
+      this.profile = profile;
+      }
+    this.customerName = name;
+    this.fetchUsers();
     this.fetchCredits();
   },
+  computed: {
+    orderNamesCombined() {
+    return this.credits.map(credit => credit.order_name).join(', ');
+  },
+  sumOfExtractedNumbers() {
+    const extractNumbers = (text) => {
+      const numbers = text.match(/\d+/g);
+      return numbers ? numbers.map(Number) : [];
+    };
+
+    const allNumbers = this.credits.flatMap(credit => extractNumbers(credit.order_name));
+    return allNumbers.reduce((sum, number) => sum + number, 0);
+    },
+  },
   methods: {
-    async fetchCredits() {
+    async fetchUsers() {
       try {
         const response = await axios.post('http://127.0.0.1:8000/userinfo', {
           email: this.email,
@@ -73,7 +109,19 @@ export default {
         this.upw = "******";
         this.uemail = this.users.map(user=> user.email).join(",");
         this.ucreate = this.users.map(user=> user.created_at.substring(0, 10)).join(",");
-        console.log(this.users);
+      } catch (error) {
+        console.error('Server responded with error:', error.response?.data || error.message);
+        this.error = 'Failed to fetch credit information'; 
+        this.loading = false;
+      }
+    },
+    async fetchCredits() {
+      try {
+        const response = await axios.post('http://127.0.0.1:8000/datab', {
+          customerName: this.customerName,
+        });
+        this.credits = response.data.data;
+        this.loading = false; 
       } catch (error) {
         console.error('Server responded with error:', error.response?.data || error.message);
         this.error = 'Failed to fetch credit information'; 

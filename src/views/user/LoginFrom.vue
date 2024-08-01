@@ -47,8 +47,12 @@ export default {
       .then(response => {
         const userName = response.data.user.name;
         const useremail = response.data.user.email;
-        const userprofile = response.data.user.profile_image;
-        console.log(userName);
+        let userprofile = response.data.user.profile_image;
+        if(userprofile){
+          console.log("1");
+        }else{
+          userprofile="a";
+        }
         sessionStorage.setItem("logg", true);
         sessionStorage.setItem('name', userName);
         sessionStorage.setItem('email', useremail);

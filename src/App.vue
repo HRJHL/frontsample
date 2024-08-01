@@ -9,18 +9,18 @@
         </div>
         <div class="flex w-full items-center">
         <div class="navbar flex-1 flex gap-[20%] md:gap-[20%] sm:gap-[20%]">
-          <router-link v-if="isLoggedIn" to="/message" @click="this.isState=false" class="message text-[20px] sm:text-[10px] font-semibold">메시지</router-link>
-          <button v-if="!isLoggedIn" onclick="location.href='/login'"  class="text-[20px] sm:text-[10px] font-semibold">메시지</button>
-          <router-link v-if="isLoggedIn" to="/credit" @click="this.isState=false" class="credit text-[20px] sm:text-[10px] font-semibold">크레딧</router-link>
-          <button v-if="!isLoggedIn" onclick="location.href='/login'" class="text-[20px] sm:text-[10px] font-semibold">크레딧</button>
+          <router-link v-if="isLoggedIn" to="/message" @click="this.isState=false" class="message text-[20px] md:text-[14px] sm:text-[10px] font-semibold">메시지</router-link>
+          <button v-if="!isLoggedIn" onclick="location.href='/login'"  class="text-[20px] md:text-[14px] sm:text-[10px] font-semibold">메시지</button>
+          <router-link v-if="isLoggedIn" to="/credit" @click="this.isState=false" class="credit text-[20px] md:text-[14px] sm:text-[10px] font-semibold">크레딧</router-link>
+          <button v-if="!isLoggedIn" onclick="location.href='/login'" class="text-[20px] md:text-[14px] sm:text-[10px] font-semibold">크레딧</button>
 
         </div>
-        <div class="flex-1 flex justify-end items-center gap-[10px] pr-[100px] md:pr-[50px] sm:pr-[50px]">
+        <div class="flex-1 flex justify-end items-center gap-[10px] pr-[100px] md:pr-[20px] sm:pr-[20px]">
           <div v-if="isLoggedIn">
-          <img :src="`http://127.0.0.1:8000/storage/${profile}`" v-if="profile" class="w-[50px] h-auto">
-          <img v-else src="@/assets/icon2/person.svg" class="w-[50px] h-auto" alt="Default Image">
+          <img v-if="profile" :src="`http://127.0.0.1:8000/storage/${profile}`" class="w-[50px] md:w-[30px] sm:w-[20px] h-auto">
+          <img v-else src="@/assets/icon2/person.svg" class="w-[50px] md:w-[30px] sm:w-[20px] h-auto" alt="Default Image">
           </div>
-          <div v-if="isLoggedIn" @click="state()" class="text-[20px] mr-[45px] sm:text-[10px] font-semibold">{{ userName }}님</div>
+          <div v-if="isLoggedIn" @click="state()" class="text-[20px] mr-[45px] md:text-[14px] sm:text-[10px] font-semibold">{{ userName }}님</div>
           <div v-if="isState" class="absolute border shoadow top-[80px] text-[20px] gap-[5px] px-[40px] py-[10px] " style="background-color: #FFFFFF; color:black;">
             <div @click="user()">회원 정보</div>
             <div>--------</div>
@@ -70,7 +70,11 @@ export default {
     let profile = sessionStorage.getItem("profile");
     this.isLoggedIn = loggedIn;
     this.userName = name;
-    this.profile = profile;
+    if(profile=="a"){
+      this.profile = null;
+    }else{
+      this.profile = profile;
+      }
     this.isState = false;
     window.addEventListener('scroll', this.handleScroll);
   },
@@ -138,8 +142,8 @@ export default {
   content: ''; 
   position: absolute; 
   left: -20px;
-  bottom: -25px; 
-  width: 180%; 
+  bottom: -30px; 
+  width: 200%; 
   height: 3px; 
   background-color: blue;
 }
@@ -150,8 +154,8 @@ export default {
   content: ''; 
   position: absolute; 
   left: -20px;
-  bottom: -30px; 
-  width: 200%; 
+  bottom: -35px; 
+  width: 240%; 
   height: 3px; 
   background-color: blue;
 }

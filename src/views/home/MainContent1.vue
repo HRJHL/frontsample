@@ -3,23 +3,23 @@
   <div class="flex flex-row pl-[12.5%] lg:px-[12.5%] md:px-[12.5%] sm:px-[12.5%] lg:flex-col md:flex-col sm:flex-col">
     <article class="flex-1 flex items-center lg:justify-center lg:text-center md:justify-center md:text-center sm:justify-center sm:text-center  lg:mt-40 md:mt-20 sm:mt-40">
       <div>
-        <div class="text-[24px] xl:text-[20px] mb-[0.5rem] sm:text-[1rem]" style="color:#FCFCFC">
+        <div class="text-[24px] xl:text-[20px] md:text-[20px] mb-[0.5rem] sm:text-[1rem]" style="color:#FCFCFC">
           인터넷 문자 메시지 전송의 모든것</div>
-        <div class="text-[56px] xl:text-[48px] font-bold mb-[2rem] sm:text-[2rem]" style="background-image: linear-gradient(to right, #9FBAFD, #4E81FF);
+        <div class="text-[56px] xl:text-[48px] font-bold mb-[2rem] md:text-[40px] sm:text-[2rem]" style="background-image: linear-gradient(to right, #9FBAFD, #4E81FF);
         background-clip: text;
         -webkit-background-clip: text;
         color: transparent;">
         가장 빠르고 안정적인<br>문자 서비스 SENDGO
         </div>
-        <div class="flex flex-row gap-5 lg:justify-center md:justify-center sm:jutify-center">
+        <div class="flex flex-row gap-5 lg:justify-center md:justify-center sm:justify-center">
           <router-link v-if="!isLoggedIn" to="/register" class="rounded-[44px] w-[206px] h-[65px] xl:w-[170px] xl:h-[56px] sm:w-[8rem] sm:h-[3rem] sm:text-[1rem] text-white 
           text-center py-4 xl:py-3 sm:py-2 text-[21px] font-medium" style="background-color : #6250FF"
           >회원가입</router-link>
-          <div v-if="isLoggedIn" class="text-[50px] font-semibold" style="color:#FFFFFF">{{ userName }}님</div>
+          <div v-if="isLoggedIn" class="text-[50px] md:text-[30px] sm:text-[20px] font-semibold" style="color:#FFFFFF">{{ userName }}님</div>
           <router-link v-if="!isLoggedIn" to="/login" class="rounded-[44px] w-[206px] h-[65px] xl:w-[170px] xl:h-[56px] sm:w-[8rem] sm:h-[3rem] sm:text-[1rem] text-white 
           text-center py-4 xl:py-3 sm:py-2 text-[21px] font-medium" style="background-color:#242424"
           >로그인</router-link>
-          <div v-if="isLoggedIn" class="text-[50px] font-semibold" style="color:#FFFFFF">환영합니다</div>
+          <div v-if="isLoggedIn" class="text-[50px] md:text-[30px] sm:text-[20px] font-semibold" style="color:#FFFFFF">환영합니다</div>
         </div>
       </div>
     </article>

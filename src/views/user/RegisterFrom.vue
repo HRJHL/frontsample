@@ -76,6 +76,7 @@ export default {
     })
     .catch(error => {
       console.error(error);
+      alert("정확한 이메일을 입력해 주세요");
     });
   },
   Verifit() {

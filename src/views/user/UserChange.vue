@@ -2,13 +2,13 @@
 <div class="w-full px-[30%] lg:px-[20%] md:px-[15%] sm:px-[5%] py-[10%]" style="background-color:#FFFFF">
     <div class="flex w-full flex-col items-center justify-center">
       <!-- 배너 이미지-->
-      <img src="@/assets/sendgo/logo.svg" class="w-[300px] lg:w-[250px] md:w-[200px] sm:w-[150px] h-auto mb-[40px] lg:mb-[30px] md:mb-[20px] sm:mb-[20px]">
+      <img src="@/assets/sendgo/logo.svg" class="w-[300px] lg:w-[250px] md:w-[200px] sm:w-[100px] h-auto mb-[40px] lg:mb-[30px] md:mb-[20px] sm:mb-[20px]">
     </div>
-    <div class="flex justify-center mb-[50px] text-[45px] font-bold">회원님의 정보</div>
+    <div class="flex justify-center mb-[50px] md:mb-[30px] sm:mb-[20px] text-[45px] md:text-[35px] sm:text-[25px] font-bold">회원님의 정보</div>
     <div class="flex flex-row justify-center items-center mb-[50px] gap-[30px]">
       <div class="px-[20px] py-[20px] rounded-[22px]" style="background-color:#0000001A">
-        <img :src="`http://127.0.0.1:8000/storage/${profile}`" v-if="profile" class="w-[100px] h-auto">
-          <img v-else src="@/assets/icon2/person.svg" class="w-[100px] h-auto" alt="Default Image">
+        <img :src="`http://127.0.0.1:8000/storage/${profile}`" v-if="profile" class="w-[100px] md:w-[80px] sm:w-[50px] h-auto">
+          <img v-else src="@/assets/icon2/person.svg" class="w-[100px] md:w-[80px] sm:w-[50px] h-auto" alt="Default Image">
       </div>
       <div class="flex">
         <div class="arrow"></div>
@@ -17,12 +17,12 @@
       <div></div>
       <div class="px-[20px] py-[20px] rounded-[22px]" style="background-color:#0000001A">
         <img v-if="isImage" :src="selectedImage" class="w-[100px] h-auto cursor-pointer" @click="openFileInput">
-        <img v-else src="@/assets/icon2/white_plus.svg" id="img" class="w-[100px] h-auto cursor-pointer" @click="openFileInput">
+        <img v-else src="@/assets/icon2/white_plus.svg" id="img" class="w-[100px] md:w-[80px] sm:w-[50px] h-auto cursor-pointer" @click="openFileInput">
          <input type="file" ref="fileInput" style="display: none;" @change="handleFileChange"/>
       </div>
     </div>
     <div class="flex justify-center mb-[50px]">
-      <button @click="changeImage()" class="px-[30px] py-[10px] text-[20px] rounded-[8px]"
+      <button @click="changeImage()" class="px-[30px] py-[10px] text-[20px] sm:text-[14px] rounded-[8px]"
       style="background-color:#4F44F0; color:#FFFFFF"
       >프로필 바꾸기</button>
     </div>
@@ -63,8 +63,8 @@
       </div>
   </div>
   <div class="flex flex-row justify-center gap-[40px]">
-    <button @click="changeAll()" class="text-[20px] px-[20px] py-[20px] font-semibold rounded-[8px]" style="background-color:#4E81FF; color:#FFFFFF">모두 변경</button>
-    <button @click="home()" class="text-[20px] px-[20px] py-[20px] font-semibold rounded-[8px]" style="background-color:#4E81FF; color:#FFFFFF">돌아가기</button>
+    <button @click="changeAll()" class="text-[20px] sm:text-[14px] px-[20px] py-[20px] sm:py-[10px] font-semibold rounded-[8px]" style="background-color:#4E81FF; color:#FFFFFF">모두 변경</button>
+    <button @click="home()" class="text-[20px] sm:text-[14px] px-[20px] py-[20px] sm:py-[10px] font-semibold rounded-[8px]" style="background-color:#4E81FF; color:#FFFFFF">돌아가기</button>
   </div>
 </div>
 </template>
@@ -99,7 +99,11 @@ export default {
     let profile = sessionStorage.getItem("profile");
     this.name = name;
     this.email = email;
-    this.profile = profile;
+    if(profile=="a"){
+      this.profile = null;
+    }else{
+      this.profile = profile;
+      }
     this.fetchCredits();
   },
   methods: {
@@ -129,17 +133,20 @@ export default {
       .then(response => {
         const user = response.data.data;
         console.log(user);
-        alert("아이디가 변경되었습니다.\n다시 로그인해주세요")
+        alert("아이디가 변경되었습니다.\n다시 로그인해주세요");
         sessionStorage.clear();
         window.location.href ='/';
       })
       .catch(error => {
         if (error.response && error.response.status === 404) {
           this.errorMessage = '입력한 정보를 다시 확인해주세요.';
+          alert("값을 입력해 주세요");
         } else if (error.response && error.response.status === 422) {
           this.errorMessage = '유효성 검사 오류: 입력한 정보를 다시 확인해주세요.';
+          alert("정확한 정보를 입력해 주세요");
         } else {
           this.errorMessage = '서버 에러가 발생했습니다. 나중에 다시 시도해주세요.';
+          alert("정확한 정보를 입력해 주세요");
         }
         console.error(error);
       });
@@ -162,10 +169,13 @@ export default {
       .catch(error => {
         if (error.response && error.response.status === 404) {
           this.errorMessage = '입력한 정보를 다시 확인해주세요.';
+          alert("값을 입력해 주세요");
         } else if (error.response && error.response.status === 422) {
           this.errorMessage = '유효성 검사 오류: 입력한 정보를 다시 확인해주세요.';
+          alert("정확한 정보를 입력해 주세요");
         } else {
           this.errorMessage = '서버 에러가 발생했습니다. 나중에 다시 시도해주세요.';
+          alert("정확한 정보를 입력해 주세요");
         }
         console.error(error);
       });
@@ -190,10 +200,13 @@ export default {
       .catch(error => {
         if (error.response && error.response.status === 404) {
           this.errorMessage = '입력한 정보를 다시 확인해주세요.';
+          alert("값을 입력해 주세요");
         } else if (error.response && error.response.status === 422) {
           this.errorMessage = '유효성 검사 오류: 입력한 정보를 다시 확인해주세요.';
+          alert("정확한 정보를 입력해 주세요");
         } else {
           this.errorMessage = '서버 에러가 발생했습니다. 나중에 다시 시도해주세요.';
+          alert("정확한 정보를 입력해 주세요");
         }
         console.error(error);
       });
@@ -229,6 +242,7 @@ export default {
         window.location.href ='/';
       } catch (error) {
         console.error('Error uploading image:', error.response?.data || error.message);
+        alert("사진을 넣어 주세요");
       }
     },
   }
