@@ -57,7 +57,7 @@
           <article class="flex flex-col py-[32px] gap-[16px] border-b">
             <div class="text-[22px] font-semibold">발신번호</div>
             <div class="flex flex-row justify-between py-[20px] px-[20px] rounded-[8px]" style="background-color:#F4F5F6">
-            <input type="text" v-model="phoneNumber2" @input="formatPhoneNumber2" maxlength="13" name="resphone" list="phonenumber" placeholder="전송할 발신번호 선택" class="flex-auto" style="background-color:#F4F5F6; outline:none">
+            <input type="text" v-model="phoneNumber2" @input="formatPhoneNumber2" maxlength="13" name="resphone" list="phonenumber" placeholder="전송할 발신번호 선택" class="flex-auto appearance-none" style="background-color:#F4F5F6; outline:none">
              <img src="@/assets/icon2/bottom_arrow.svg" class=""/>
              <datalist id="phonenumber">
               <option value="010-7548-3032"></option>
@@ -397,6 +397,7 @@ export default {
 .toggle_switch input[type="checkbox"]:checked + .slider { background-color: #007bff; } 
 .toggle_switch .slider::before { content: ""; position: absolute; top: 4px; left: 3px; width: 24px; height: 24px; background-color: #fff; border-radius: 50%; transition: 0.4s; } 
 .toggle_switch input[type="checkbox"]:checked + .slider::before { transform:translateX(30px); } 
+
 
 @media (max-width: 768px) {
     .device {

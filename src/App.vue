@@ -15,7 +15,7 @@
           <button v-if="!isLoggedIn" onclick="location.href='/login'" class="text-[20px] md:text-[14px] sm:text-[10px] font-semibold">크레딧</button>
 
         </div>
-        <div class="flex-1 flex justify-end items-center gap-[10px] pr-[100px] md:pr-[20px] sm:pr-[20px]">
+        <div class="flex-1 flex justify-end items-center gap-[10px] pr-[100px] md:pr-[20px] sm:pr-[0px]">
           <div v-if="isLoggedIn">
           <img v-if="profile" :src="`http://127.0.0.1:8000/storage/${profile}`" class="w-[50px] md:w-[30px] sm:w-[20px] h-auto">
           <img v-else src="@/assets/icon2/person.svg" class="w-[50px] md:w-[30px] sm:w-[20px] h-auto" alt="Default Image">

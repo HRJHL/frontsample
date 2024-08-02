@@ -9,7 +9,7 @@
         <input type="text" v-model="name" placeholder="홍길동" class="text-[20px] md:text-[14px] sm:text-[10px] w-full pl-[10px] py-[5px] rounded-[8px]" style="border: 1px solid #CECECE;" required>
         <div class="font-semibold">이메일</div>
         <div class="flex flex-row w-full gap-[10px]">
-          <input type="email" v-model="email" :readonly="isReadonly" placeholder="--@gmail.com 이메일인증을 먼저 해주세요" class="text-[20px] md:text-[14px] sm:text-[10px] w-full pl-[10px] py-[5px] rounded-[8px]" style="border: 1px solid #CECECE;" required>
+          <input type="email" v-model="email" :readonly="isReadonly" placeholder="--@gmail.com 이메일인증을 먼저 해주세요" class="text-[20px] md:text-[14px] sm:text-[10px] w-full pl-[10px] py-[5px] rounded-[8px]" style="border: 1px solid #CECECE;">
           <button type="button" @click="Send()" v-if="!isRigist" class="flex w-[60px] md:text-[12px] sm:text-[10px] justify-center items-center rounded-[8px]" style="background-color:#4F44F0; color:#FFFFFF">전송</button>
         </div>
         <div v-if="isSend">
@@ -18,6 +18,8 @@
             <button type="button" @click="Verifit()" class="flex w-[60px] justify-center items-center rounded-[8px]" style="background-color:#4F44F0; color:#FFFFFF">인증</button>
           </div>
         </div>
+        <div class="font-semibold">전화번호</div>
+        <input type="text" v-model="phone" placeholder="-를 빼고 입력해주세요" class="text-[20px] md:text-[14px] sm:text-[10px] w-full pl-[10px] py-[5px] rounded-[8px]" style="border: 1px solid #CECECE;" required>
         <div class="font-semibold">아이디</div>
         <input type="text" v-model="identity" maxlength="16" placeholder="16글자 이하로 작성" class="text-[20px] md:text-[14px] sm:text-[10px] w-full pl-[10px] py-[5px] rounded-[8px]" style="border: 1px solid #CECECE;" required>
         <div class="font-semibold">비밀번호</div>
@@ -40,6 +42,7 @@ export default {
       name: '',
       email: '',
       identity: '',
+      phone: '',
       password: '',
       isSend: false,
       isRigist: false,
@@ -53,6 +56,7 @@ export default {
       axios.post('http://127.0.0.1:8000/register', {
         name: this.name,
         email: this.email,
+        phone: this.phone,
         identity: this.identity,
         password: this.password,
       })
@@ -93,3 +97,10 @@ export default {
   }
 };
 </script>
+<style scoped>
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+</style>

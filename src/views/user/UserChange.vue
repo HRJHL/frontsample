@@ -1,9 +1,5 @@
 <template>
 <div class="w-full px-[30%] lg:px-[20%] md:px-[15%] sm:px-[5%] py-[10%]" style="background-color:#FFFFF">
-    <div class="flex w-full flex-col items-center justify-center">
-      <!-- 배너 이미지-->
-      <img src="@/assets/sendgo/logo.svg" class="w-[300px] lg:w-[250px] md:w-[200px] sm:w-[100px] h-auto mb-[40px] lg:mb-[30px] md:mb-[20px] sm:mb-[20px]">
-    </div>
     <div class="flex justify-center mb-[50px] md:mb-[30px] sm:mb-[20px] text-[45px] md:text-[35px] sm:text-[25px] font-bold">회원님의 정보</div>
     <div class="flex flex-row justify-center items-center mb-[50px] gap-[30px]">
       <div class="px-[20px] py-[20px] rounded-[22px]" style="background-color:#0000001A">
