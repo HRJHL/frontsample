@@ -91,15 +91,13 @@ export default {
         const response = await axios.post('http://127.0.0.1:8000/auth/kakao', {
           access_token: authObj.access_token
         });
-        
         const userName = response.data.user.name;
         const useremail = response.data.user.email;
-        let userprofile = response.data.user.profile_image || 'a'; // 기본 프로필 이미지 설정
         sessionStorage.setItem("logg", true);
         sessionStorage.setItem('name', userName);
         sessionStorage.setItem('email', useremail);
-        sessionStorage.setItem('profile', userprofile);
         window.location.href ='/message';
+        console.log(response);
       } catch (error) {
         console.error('Kakao login error:', error);
         alert("로그인에 실패했습니다.");

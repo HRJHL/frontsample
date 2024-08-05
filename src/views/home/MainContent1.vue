@@ -1,5 +1,5 @@
 <template class="tem">
-<section class="overflow-x-hidden" style="background-color:black">
+<section class="overflow-hidden lg:h-[1500px] md:h-[1000px] sm:h-[900px]" style="background-color:black">
   <div class="flex flex-row pl-[12.5%] lg:px-[12.5%] md:px-[12.5%] sm:px-[12.5%] lg:flex-col md:flex-col sm:flex-col">
     <article class="flex-1 flex items-center lg:justify-center lg:text-center md:justify-center md:text-center sm:justify-center sm:text-center  lg:mt-40 md:mt-20 sm:mt-40">
       <div>
