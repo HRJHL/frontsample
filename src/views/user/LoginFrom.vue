@@ -41,12 +41,10 @@ export default {
     };
   },
   mounted() {
-    // 카카오 SDK 초기화
     if (!window.Kakao.isInitialized()) {
       window.Kakao.init('8a670c965eb7e112ae1be878b9ce90b9'); // 카카오 JavaScript 키 입력
     }
 
-    // 카카오 로그인 버튼 생성
     window.Kakao.Auth.createLoginButton({
       container: '#kakao-login-button',
       success: (authObj) => {
@@ -67,7 +65,7 @@ export default {
       .then(response => {
         const userName = response.data.user.name;
         const useremail = response.data.user.email;
-        let userprofile = response.data.user.profile_image || 'a'; // 기본 프로필 이미지 설정
+        let userprofile = response.data.user.profile_image || 'a';
         sessionStorage.setItem("logg", true);
         sessionStorage.setItem('name', userName);
         sessionStorage.setItem('email', useremail);
@@ -87,15 +85,16 @@ export default {
     },
     async handleKakaoLoginSuccess(authObj) {
       try {
-        // 액세스 토큰을 서버에 전송하여 사용자 인증 처리
         const response = await axios.post('http://127.0.0.1:8000/auth/kakao', {
           access_token: authObj.access_token
         });
         const userName = response.data.user.name;
         const useremail = response.data.user.email;
+        let userprofile = response.data.user.profile_image || 'a';
         sessionStorage.setItem("logg", true);
         sessionStorage.setItem('name', userName);
         sessionStorage.setItem('email', useremail);
+        sessionStorage.setItem('profile', userprofile);
         window.location.href ='/message';
         console.log(response);
       } catch (error) {
