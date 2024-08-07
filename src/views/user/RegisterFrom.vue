@@ -80,7 +80,12 @@ export default {
     })
     .catch(error => {
       console.error(error);
-      alert("정확한 이메일을 입력해 주세요");
+      if(error.response.status == '409'){
+        alert("이미 가입된 이메일 입니다.");
+      }
+      else{
+        alert("정확한 이메일을 입력해 주세요");
+      }
     });
   },
   Verifit() {

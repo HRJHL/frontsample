@@ -12,15 +12,20 @@
       </div>
       <!-- 아이디 비번 찾기 -->
       <div class="flex flex-row justify-end gap-[10px] mb-[20px]">
-        <div @click="Sid()" class="text-[15px]">아이디 찾기</div>
+        <div @click="Sid()" class="text-[15px] sm:text-[12px]">아이디 찾기</div>
         <div class="text-[15px]">|</div>
-        <div @click="Spw()" class="text-[15px]">비밀번호 찾기</div>
+        <div @click="Spw()" class="text-[15px] sm:text-[12px]">비밀번호 찾기</div>
       </div>
       <div class="flex justify-center rounded-[8px] mb-[30px] sm:mb-[20px]" style="background-color:#4F44F0;">
         <button type="submit" class="font-semibold px-[20px] py-[15px] sm:text-[14px] sm:py-[10px]" style="color:#FFFFFF">로그인</button>
       </div>
-      <div class="flex justify-center rounded-[8px] mb-[30px] sm:mb-[20px]">
-        <div id="kakao-login-button"></div>
+      <div class="button-container flex flex-row md:flex-col sm:flex-col gap-[20px] justify-center rounded-[8px] mb-[30px] sm:mb-[20px]">
+        <div class="button-wrapper">
+          <div id="kakao-login-button"></div>
+        </div>
+        <div class="button-wrapper">
+          <div id="g_id_signin" data-type="standard"></div>
+        </div>
       </div>
       <div class="flex justify-center sm:text-[10px]">
         계정이 없으신가요?&nbsp;<router-link to="/register" class="font-semibold border-b" style="color:#4F44F0; border-color:#4F44F0;">회원가입하기</router-link>
@@ -41,8 +46,9 @@ export default {
     };
   },
   mounted() {
+    // Kakao initialization
     if (!window.Kakao.isInitialized()) {
-      window.Kakao.init('8a670c965eb7e112ae1be878b9ce90b9'); // 카카오 JavaScript 키 입력
+      window.Kakao.init('8a670c965eb7e112ae1be878b9ce90b9');
     }
 
     window.Kakao.Auth.createLoginButton({
@@ -54,6 +60,9 @@ export default {
         console.error(err);
       }
     });
+
+    // Google Sign-In initialization
+    this.initializeGoogleSignIn();
   },
   methods: {
     login() {
@@ -101,11 +110,76 @@ export default {
         console.error('Kakao login error:', error);
         alert("로그인에 실패했습니다.");
       }
-    }
+    },
+    async handleGoogleLoginSuccess(response) {
+      try {
+        const id_token = response.credential;
+        const res = await axios.post('http://127.0.0.1:8000/auth/google', {
+          id_token: id_token
+        });
+        const userName = res.data.user.name;
+        const useremail = res.data.user.email;
+        let userprofile = res.data.user.profile_image || 'a';
+        sessionStorage.setItem("logg", true);
+        sessionStorage.setItem('name', userName);
+        sessionStorage.setItem('email', useremail);
+        sessionStorage.setItem('profile', userprofile);
+        window.location.href ='/message';
+      } catch (error) {
+        console.error('Google login error:', error);
+        alert("로그인에 실패했습니다.");
+      }
+    },
+    initializeGoogleSignIn() {
+      const script = document.createElement('script');
+      script.src = 'https://accounts.google.com/gsi/client';
+      script.async = true;
+      script.onload = () => {
+        window.google.accounts.id.initialize({
+          client_id: '741549460694-74df1r5va4oshv90chemn9u3p5r3mimv.apps.googleusercontent.com',
+          callback: this.handleGoogleLoginSuccess.bind(this)
+        });
+        window.google.accounts.id.renderButton(
+          document.getElementById('g_id_signin'),
+          { theme: 'outline', size: 'large' }
+        );
+      };
+      document.head.appendChild(script);
+    },
   }
 };
 </script>
-
 <style scoped>
-/* 스타일 추가 */
+  .button-container {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-bottom: 30px;
+  }
+
+  .button-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 200px;  
+    height: 50px;  
+    border-radius: 8px;
+    
+  }
+
+  .button-wrapper div {
+    width: 100%;
+    height: 100%;
+  }
+
+  #kakao-login-button, #g_id_signin {
+    width: 90%;
+    height: 100%;
+  }
+
+  #kakao-login-button iframe, #g_id_signin iframe {
+    width: 100% !important;
+    height: 90% !important;
+    border: none;
+  }
 </style>
