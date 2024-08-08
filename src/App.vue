@@ -30,6 +30,52 @@
         </div>
         </div>
       </nav>
+      <div v-if="isChat" class=" absolute w-[300px] h-[500px] top-[230px] right-[100px] p-[20px] rounded-[8px] border" style="background-color:#ffffff">
+        <div class="flex flex-col gap-[10px]">
+          <div class="flex flex-row gap-[20px] border-b pb-[10px] mb-[10px]" style="border-color:black">
+            <div>
+              <img src="@/assets/amuz.png" class="w-[50px]">
+            </div>
+            <div class="flex text-[30px] font-semibold" style="color:black">Sendgo</div>
+          </div>
+          <div class="flex flex-col p-[10px] rounded-[8px] gap-[10px]" style="background-color:skyblue">
+            <div class="flex flex-row gap-[20px]">
+              <div>
+                <img src="@/assets/icon2/person.svg">
+              </div>
+              <div class="text-[18px]" style="color:black">Guest</div>
+            </div>
+            <div class="flex justify-center rounded-[8px]" @click="Mess()" style="background-color:white; color:black"> 문의하기</div>
+          </div>
+          <div class="flex flex-row h-full">
+            <div class="flex items-center" style="color:black"></div>
+          </div>
+        </div>
+        <div class="flex flex-row justify-between px-[20px] pt-[250px]">
+          <div><img src="@/assets/icon2/person.svg" @click="home()"></div>
+          <div><img src="@/assets/icon2/clock.svg" @click="Mess()"></div>
+          <div><img src="@/assets/icon2/reroll.svg" @click="reset()"></div>
+        </div>
+      </div>
+      <div v-if="isMess" class=" absolute w-[300px] h-[500px] top-[230px] right-[100px] p-[20px] rounded-[8px] border" style="background-color:#ffffff">
+        <div class="flex flex-col h-[380px] rounded-[8px] mb-[10px] px-[10px] py-[5px]" style="background-color:skyblue; overflow-y: auto;">
+          <div v-for="(message, index) in messages" :key="index" class="mb-[5px] px-[10px] flex justify-end">
+        <p class="text-black">{{ message }}</p>
+        </div>
+        <div v-for="(message, index) in messages2" :key="index" class="mb-[5px] px-[10px] flex justify-start">
+        <p class="text-black">{{ message }}</p>
+        </div>
+        </div>
+        <input v-model="newMessage" @keyup.enter="sendMessage" type="text" class="flex w-full px-[10px] py-[5px] border" style="color:black">
+        <div class="flex flex-row justify-between px-[20px] pt-[10px]">
+          <div><img src="@/assets/icon2/person.svg" @click="home()"></div>
+          <div><img src="@/assets/icon2/clock.svg" @click="Mess()"></div>
+          <div><img src="@/assets/icon2/reroll.svg" @click="reset()"></div>
+        </div>
+      </div>
+      <div class="absolute w-[50px] h-auto top-[750px] right-[100px]">
+        <img src="@/assets/amuz.png" @click="Chat()" class="rounded-[8px]">
+      </div>
     </header>
     <router-view class="mt-[5rem]"/>
   </div>
@@ -47,9 +93,14 @@ export default {
     return{
       isLoggedIn: false,
       isState: false,
+      isChat: false,
+      isMess: false,
       userName: '',
       isScrolled: false,
       profile: '',
+      newMessage: '',
+      messages: [],
+      messages2: [],
     };
   },
   computed: {
@@ -100,6 +151,42 @@ export default {
     },
     handleScroll() {
       this.isScrolled = window.scrollY > 0;
+    },
+    Chat() {
+      if(this.isChat==false && this.isMess==false){
+        this.isChat = true;
+      }
+      else{
+        this.isChat =false;
+        this.isMess =false;
+      }
+    },
+    Mess() {
+      if(this.isMess==false){
+        this.isMess = true;
+        this.isChat = false;
+      }
+    },
+    home() {
+      if(this.isChat==false){
+        this.isChat = true;
+        this.isMess = false;
+      }
+    },
+    reset() {
+      window.location.href ="/";
+    },
+    sendMessage() {
+      if (this.newMessage.trim()) {
+        this.messages.push(this.newMessage);
+        this.messages2.push("문의"); 
+        this.newMessage = '';
+        this.$nextTick(() => {
+          // Scroll to the bottom of the messages container
+          const container = this.$el.querySelector('.flex-col');
+          container.scrollTop = container.scrollHeight;
+        });
+      }
     },
   },
 };
