@@ -13,11 +13,11 @@
         </div>
         <div class="flex flex-row gap-5 lg:justify-center md:justify-center sm:justify-center">
           <router-link v-if="!isLoggedIn" to="/register" class="rounded-[44px] w-[206px] h-[65px] xl:w-[170px] xl:h-[56px] sm:w-[8rem] sm:h-[3rem] sm:text-[1rem] text-white 
-          text-center py-4 xl:py-3 sm:py-2 text-[21px] font-medium" style="background-color : #6250FF"
+          text-center py-4 xl:py-3 sm:py-3 text-[21px] font-medium" style="background-color : #6250FF"
           >회원가입</router-link>
           <div v-if="isLoggedIn" class="text-[50px] md:text-[30px] sm:text-[20px] font-semibold" style="color:#FFFFFF">{{ userName }}님</div>
           <router-link v-if="!isLoggedIn" to="/login" class="rounded-[44px] w-[206px] h-[65px] xl:w-[170px] xl:h-[56px] sm:w-[8rem] sm:h-[3rem] sm:text-[1rem] text-white 
-          text-center py-4 xl:py-3 sm:py-2 text-[21px] font-medium" style="background-color:#242424"
+          text-center py-4 xl:py-3 sm:py-3 text-[21px] font-medium" style="background-color:#242424"
           >로그인</router-link>
           <div v-if="isLoggedIn" class="text-[50px] md:text-[30px] sm:text-[20px] font-semibold" style="color:#FFFFFF">환영합니다</div>
         </div>

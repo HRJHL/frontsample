@@ -12,6 +12,7 @@ import SearchL from '@/views/SearchL.vue';
 import SearchP from '@/views/SearchP.vue';
 import UserPage from '@/views/UserPage.vue';
 import UserPage2 from '@/views/UserPage2.vue';
+import ManegerPage from '@/views/ManegerPage.vue';
 
 const routes = [
   {
@@ -73,6 +74,11 @@ const routes = [
     path: '/userpage2',
     name: 'UserPage2',
     component: UserPage2
+  },
+  {
+    path: '/manegerpage',
+    name: 'ManegerPage',
+    component: ManegerPage
   },
 ];
 

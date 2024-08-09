@@ -15,7 +15,7 @@
           <button v-if="!isLoggedIn" onclick="location.href='/login'" class="text-[20px] md:text-[14px] sm:text-[10px] font-semibold">크레딧</button>
 
         </div>
-        <div class="flex-1 flex justify-end items-center gap-[10px] pr-[100px] md:pr-[20px] sm:pr-[0px]">
+        <div class="flex-1 flex justify-end items-center gap-[10px] pr-[100px] md:pr-[80px] sm:pr-[30px]">
           <div v-if="isLoggedIn">
           <img v-if="profile" :src="`http://127.0.0.1:8000/storage/${profile}`" class="w-[50px] md:w-[30px] sm:w-[20px] h-auto">
           <img v-else src="@/assets/icon2/person.svg" class="w-[50px] md:w-[30px] sm:w-[20px] h-auto" alt="Default Image">
@@ -23,6 +23,10 @@
           <div v-if="isLoggedIn" @click="state()" class="text-[20px] mr-[45px] md:text-[14px] sm:text-[10px] font-semibold">{{ userName }}님</div>
           <div v-if="isState" class="absolute border shoadow top-[80px] text-[20px] gap-[5px] px-[40px] py-[10px] " style="background-color: #FFFFFF; color:black;">
             <div @click="user()">회원 정보</div>
+            <div v-if="isManeger">
+              <div>--------</div>
+              <div @click="maneger()">관리자</div>
+            </div>
             <div>--------</div>
             <div @click="logout()">로그아웃</div>
           </div>
@@ -30,7 +34,7 @@
         </div>
         </div>
       </nav>
-      <div v-if="isChat" class=" absolute w-[300px] h-[500px] top-[230px] right-[100px] p-[20px] rounded-[8px] border" style="background-color:#ffffff">
+      <div v-if="isChat" class=" absolute w-[300px] h-[500px] top-[100px] right-[50px] sm:right-[30px] p-[20px] rounded-[8px] border" style="background-color:#ffffff">
         <div class="flex flex-col gap-[10px]">
           <div class="flex flex-row gap-[20px] border-b pb-[10px] mb-[10px]" style="border-color:black">
             <div>
@@ -43,7 +47,7 @@
               <div>
                 <img src="@/assets/icon2/person.svg">
               </div>
-              <div class="text-[18px]" style="color:black">Guest</div>
+              <div class="text-[18px]" style="color:black">{{ userName }}님</div>
             </div>
             <div class="flex justify-center rounded-[8px]" @click="Mess()" style="background-color:white; color:black"> 문의하기</div>
           </div>
@@ -57,23 +61,21 @@
           <div><img src="@/assets/icon2/reroll.svg" @click="reset()"></div>
         </div>
       </div>
-      <div v-if="isMess" class=" absolute w-[300px] h-[500px] top-[230px] right-[100px] p-[20px] rounded-[8px] border" style="background-color:#ffffff">
-        <div class="flex flex-col h-[380px] rounded-[8px] mb-[10px] px-[10px] py-[5px]" style="background-color:skyblue; overflow-y: auto;">
-          <div v-for="(message, index) in messages" :key="index" class="mb-[5px] px-[10px] flex justify-end">
-        <p class="text-black">{{ message }}</p>
+      <div v-if="isMess" class=" absolute w-[300px] h-[500px] top-[100px] right-[50px] sm:right-[30px] p-[20px] rounded-[8px] border" style="background-color:#ffffff">
+        <div class="flex flex-col h-[372px] rounded-[8px] mb-[10px] px-[10px] py-[10px]" style="background-color:skyblue; overflow-y: auto;">
+          <div class="border-b pb-[10px] mb-[10px] font-bold" style="border-color:black; color:black;">문의페이지</div>
+          <div v-for="(message, index) in combinedMessages" :key="index" :class="{'flex justify-end': index % 2 === 0, 'flex justify-start': index % 2 !== 0}" class="mb-[10px] px-[10px]">
+    <p class="text-black rounded-[8px] px-[10px] py-[5px]" style="background-color:#ffffff">{{ message }}</p>
+  </div>
         </div>
-        <div v-for="(message, index) in messages2" :key="index" class="mb-[5px] px-[10px] flex justify-start">
-        <p class="text-black">{{ message }}</p>
-        </div>
-        </div>
-        <input v-model="newMessage" @keyup.enter="sendMessage" type="text" class="flex w-full px-[10px] py-[5px] border" style="color:black">
+        <input v-model="newMessage" @keyup.enter="sendMessage" type="text" placeholder="궁금한점을 질문해 주세요" class="flex w-full px-[10px] py-[5px] border" style="color:black">
         <div class="flex flex-row justify-between px-[20px] pt-[10px]">
           <div><img src="@/assets/icon2/person.svg" @click="home()"></div>
           <div><img src="@/assets/icon2/clock.svg" @click="Mess()"></div>
           <div><img src="@/assets/icon2/reroll.svg" @click="reset()"></div>
         </div>
       </div>
-      <div class="absolute w-[50px] h-auto top-[750px] right-[100px]">
+      <div v-if="isLoggedIn" class="absolute w-[50px] sm:w-[30px] h-auto top-[15px] sm:top-[25px] right-[50px] sm:right-[30px]">
         <img src="@/assets/amuz.png" @click="Chat()" class="rounded-[8px]">
       </div>
     </header>
@@ -83,6 +85,7 @@
 
 
 <script>
+import axios from 'axios';
 
 export default {
   name: 'App',
@@ -95,12 +98,14 @@ export default {
       isState: false,
       isChat: false,
       isMess: false,
+      isManeger: false,
       userName: '',
       isScrolled: false,
       profile: '',
       newMessage: '',
       messages: [],
       messages2: [],
+      email: '',
     };
   },
   computed: {
@@ -114,11 +119,17 @@ export default {
         return require('@/assets/logo.svg');
       }
     },
+    combinedMessages() {
+      // messages와 messages2 배열을 번갈아가며 합친 배열 반환
+      return this.messages.flatMap((msg, i) => [msg, this.messages2[i]]);
+    },
   },
   mounted() {
     let loggedIn = sessionStorage.getItem("logg");
     let name = sessionStorage.getItem("name");
+    let email = sessionStorage.getItem("email");
     let profile = sessionStorage.getItem("profile");
+    this.email = email;
     this.isLoggedIn = loggedIn;
     this.userName = name;
     if(profile=="a"){
@@ -128,6 +139,9 @@ export default {
       }
     this.isState = false;
     window.addEventListener('scroll', this.handleScroll);
+    if(this.email=="jinho99kr@gmail.com"){
+      this.isManeger = true;
+    }
   },
   beforeUnmount() {
     window.removeEventListener('scroll', this.handleScroll);
@@ -148,6 +162,10 @@ export default {
     user(){
       this.isState = false;
       window.location.href="/userpage";
+    },
+    maneger() {
+      this.isState = false;
+      window.location.href="/manegerpage";
     },
     handleScroll() {
       this.isScrolled = window.scrollY > 0;
@@ -179,10 +197,29 @@ export default {
     sendMessage() {
       if (this.newMessage.trim()) {
         this.messages.push(this.newMessage);
-        this.messages2.push("문의"); 
+        if(this.newMessage.includes("안녕")||this.newMessage.includes("하이")){
+          this.messages2.push("안녕하세요.");
+        }else{
+          if(this.newMessage.includes("?")){
+            axios.post('http://127.0.0.1:8000/chat', {
+              email: this.email,
+              message: this.newMessage,
+              })
+              .then(response => {
+                console.log(response);
+              })
+              .catch(error => {
+                console.error(error);
+              });
+              this.messages2.push("문의가 접수되었습니다. 답변을 기다려 주세요");
+          }
+          else{
+            this.messages2.push("'?' 를 포함해서 질문해 주세요");
+          }
+        }
         this.newMessage = '';
         this.$nextTick(() => {
-          // Scroll to the bottom of the messages container
+
           const container = this.$el.querySelector('.flex-col');
           container.scrollTop = container.scrollHeight;
         });
