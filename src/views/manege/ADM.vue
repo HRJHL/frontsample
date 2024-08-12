@@ -11,12 +11,26 @@
             <div class="flex-1 text-center">문의내용</div>
             <div class="flex-1 text-center">답변</div>
           </div>
-          <div v-for="chat in paginatedChats" :key="chat.id" class="flex flex-row border-b p-2" style="background-color:#FFFFFF">
+          <div v-for="chat in paginatedChats" :key="chat.id" class="flex flex-row items-cneter border-b p-2" style="background-color:#FFFFFF">
             <div class="flex-1 text-center">{{ chat.email }}</div>
             <div class="flex-1 text-center">{{ chat.message }}</div>
-            <div class="flex-1 flex flex-row gap-[10px] text-center">
-              <input type="text" placeholder="답변을 입력해주세요" class="flex-auto px-[10px] py-[5px] border">
-              <button class="px-[20px] py-[10px] rounded-[8px]" style="background-color:#4F44F0; color:#ffffff">완료</button>
+            <div class="flex-1 flex flex-row text-center">
+              <div v-if="chat.talk" class="flex-1 text-center">{{ chat.talk }}</div>
+              <div v-else class="flex gap-[10px]">
+                <input 
+                  type="text" 
+                  v-model="inputValues[chat.id]" 
+                  placeholder="답변을 입력해주세요" 
+                  class="flex-auto px-[10px] py-[5px] border"
+                >
+                <button 
+                  @click="submitResponse(chat.id)" 
+                  class="px-[20px] py-[10px] rounded-[8px]" 
+                  style="background-color:#4F44F0; color:#ffffff"
+                >
+                  완료
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -26,7 +40,7 @@
             <button 
               v-for="page in pageNumbers" 
               :key="page" 
-              @click="goToPage(page)" 
+              @click="goToPage(page)"
               :class="{'bg-blue-500 text-white': page === currentPage, 'bg-gray-200': page !== currentPage}" 
               class="mx-1 px-3 py-1 rounded"
             >
@@ -50,12 +64,13 @@ export default {
   name: 'ChatContent',
   data() {
     return {
-      chats: [],  // Added `chats` to data
+      chats: [],
       loading: true,
       error: null,
       email: '',
       currentPage: 1,
       itemsPerPage: 10,
+      inputValues: {},  // 각 채팅의 답변을 저장할 객체
     };
   },
   mounted() {
@@ -87,10 +102,36 @@ export default {
         });
         this.chats = response.data.data;
         this.loading = false; 
+        this.initializeInputValues();  // 초기화
       } catch (error) {
         console.error('Server responded with error:', error.response?.data || error.message);
         this.error = 'Failed to fetch chat information'; 
         this.loading = false;
+      }
+    },
+    initializeInputValues() {
+      this.chats.forEach(chat => {
+        this.inputValues[chat.id] = ''; 
+      });
+    },
+    async submitResponse(chatId) {
+      const responseText = this.inputValues[chatId];
+      if (!responseText) {
+        alert('답변을 입력해주세요.');
+        return;
+      }
+      
+      try {
+        await axios.post('http://127.0.0.1:8000/talk', {
+          email: this.email,
+          messageId: chatId,
+          talk: responseText
+        });
+        this.fetchChats(); // 업데이트 후 채팅 재요청
+        console.log('Response submitted successfully.');
+      } catch (error) {
+        console.error('Failed to update chat:', error.response?.data || error.message);
+        this.error = 'Failed to submit response';
       }
     },
     previousPage() {

@@ -51,11 +51,20 @@
             </div>
             <div class="flex justify-center rounded-[8px]" @click="Mess()" style="background-color:white; color:black"> 문의하기</div>
           </div>
+          <div class="flex flex-col p-[10px] rounded-[8px] gap-[10px]" style="background-color:skyblue">
+            <div class="flex flex-row gap-[20px]">
+              <div>
+                <img src="@/assets/icon2/person.svg">
+              </div>
+              <div class="text-[18px]" style="color:black">관리자</div>
+            </div>
+            <div class="flex justify-center rounded-[8px]" @click="MessA()" style="background-color:white; color:black"> 답변보기</div>
+          </div>
           <div class="flex flex-row h-full">
             <div class="flex items-center" style="color:black"></div>
           </div>
         </div>
-        <div class="flex flex-row justify-between px-[20px] pt-[250px]">
+        <div class="flex flex-row justify-between px-[20px] pt-[150px]">
           <div><img src="@/assets/icon2/person.svg" @click="home()"></div>
           <div><img src="@/assets/icon2/clock.svg" @click="Mess()"></div>
           <div><img src="@/assets/icon2/reroll.svg" @click="reset()"></div>
@@ -185,6 +194,35 @@ export default {
         this.isChat = false;
       }
     },
+    MessA() {
+  if (this.isMess == false) {
+    this.isMess = true;
+    this.isChat = false;
+    axios.post('http://127.0.0.1:8000/talkM', {
+      email: this.email,
+    })
+    .then(response => {
+      console.log('Server response:', response.data);
+      if (response.data.data) {
+        this.messages = response.data.data.map(chat => chat.message);      
+        this.messages2 = response.data.data.map(chat => {
+          if (chat.talk === null) {
+            return '답변을 기다려 주세요'; 
+          }
+          return chat.talk;
+        });    
+        console.log('Chat data:', response.data.data);
+      } else {
+        console.log('No chat data found.');
+      }
+    })
+    .catch(error => {
+      console.error('Server responded with error:', error.response?.data || error.message);
+      this.error = 'Failed to fetch chat information'; 
+    });
+  }
+},
+
     home() {
       if(this.isChat==false){
         this.isChat = true;
