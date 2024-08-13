@@ -11,7 +11,7 @@
             <div class="flex-1 text-center">문의내용</div>
             <div class="flex-1 text-center">답변</div>
           </div>
-          <div v-for="chat in paginatedChats" :key="chat.id" class="flex flex-row items-cneter border-b p-2" style="background-color:#FFFFFF">
+          <div v-for="chat in paginatedChats" :key="chat.id" class="flex flex-row items-center border-b p-2" style="background-color:#FFFFFF">
             <div class="flex-1 text-center">{{ chat.email }}</div>
             <div class="flex-1 text-center">{{ chat.message }}</div>
             <div class="flex-1 flex flex-row text-center">
